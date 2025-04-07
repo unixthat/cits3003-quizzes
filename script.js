@@ -252,4 +252,7 @@ function showQuizList() {
             </div>
         </div>
     `;
-} 
+}
+
+// Initialize the quiz list when the page loads
+document.addEventListener('DOMContentLoaded', showQuizList); 
