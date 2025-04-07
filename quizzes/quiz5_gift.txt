@@ -1,0 +1,100 @@
+// Quiz 5 - CITS3003 Computer Graphics
+// GIFT format for Moodle import
+
+// Instructions
+::Quiz 5 - CITS3003 Computer Graphics::
+This is a 30-minute closed-book quiz. Answer all questions. Each question is worth equal marks. Total marks: 20
+
+// Part A: True/False Questions
+::Part A - True/False (10 marks)::
+In OpenGL, the depth buffer is used to determine which fragments should be drawn when objects overlap.{T}
+
+The perspective projection matrix is always a 4x4 matrix that transforms points from eye space to clip space.{T}
+
+In modern OpenGL, shaders are written in GLSL (OpenGL Shading Language) and must be compiled before use.{T}
+
+The view matrix transforms vertices from world space to eye space, where the camera is at the origin looking down the negative z-axis.{T}
+
+In OpenGL, the stencil buffer can be used to create complex masking effects and control which fragments are drawn.{T}
+
+The model matrix transforms vertices from model space (local to the object) to world space.{T}
+
+In a typical OpenGL program, the projection matrix should be recalculated whenever the window is resized.{T}
+
+The viewport transformation is the final step in the graphics pipeline that maps normalized device coordinates to window coordinates.{T}
+
+In modern OpenGL, vertex attributes are stored in Vertex Buffer Objects (VBOs) and accessed through Vertex Array Objects (VAOs).{T}
+
+The perspective division (dividing by w) occurs after the vertex shader and before the fragment shader.{T}
+
+// Part B: Multiple Choice Questions
+::Part B - Multiple Choice (10 marks)::
+Which of these is NOT a typical stage in the OpenGL graphics pipeline?{
+~Vertex Shader
+~Rasterization
+~Fragment Shader
+=Memory Management
+}
+
+What is the purpose of the w component in homogeneous coordinates?{
+~To represent time in animations
+=To distinguish between points and vectors
+~To store texture coordinates
+~To represent color intensity
+}
+
+In a perspective projection, what happens to parallel lines in the scene?{
+~They remain parallel in the projected image
+=They converge to a vanishing point
+~They become curved
+~They disappear
+}
+
+Which of these is NOT a valid uniform variable type in GLSL?{
+~mat4
+~vec3
+~sampler2D
+=array
+}
+
+What is the purpose of the stencil buffer in OpenGL?{
+~To store depth values
+~To store color values
+=To control which fragments are drawn
+~To store texture coordinates
+}
+
+In modern OpenGL, what is the correct way to handle window resizing?{
+~Automatically handled by OpenGL
+=Update the viewport with glViewport and recalculate the projection matrix
+~Recreate the window
+~Ignore the resize event
+}
+
+Which statement about the Model-View-Projection (MVP) matrix is correct?{
+~It transforms vertices from model space directly to screen space
+=It combines the model transform, view transform, and projection transform into one matrix
+~It's only used in the fragment shader
+~It's automatically provided by OpenGL
+}
+
+In modern OpenGL, what is the purpose of a Vertex Array Object (VAO)?{
+~To store vertex data
+=To store the state of vertex attribute configurations
+~To store shader programs
+~To store texture data
+}
+
+Which of the following is NOT a valid operation in affine geometry?{
+~Adding a vector to a point
+~Subtracting two points to get a vector
+=Adding two points
+~Scaling a vector
+}
+
+In a typical OpenGL program, which of these operations would you typically do LAST in your rendering loop?{
+~Clear the buffers
+~Update uniform variables
+~Draw the geometry
+=Swap the buffers
+} 

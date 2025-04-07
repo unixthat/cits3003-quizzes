@@ -1,0 +1,100 @@
+// Quiz 3 - CITS3003 Computer Graphics
+// GIFT format for Moodle import
+
+// Instructions
+::Quiz 3 - CITS3003 Computer Graphics::
+This is a 30-minute closed-book quiz. Answer all questions. Each question is worth equal marks. Total marks: 20
+
+// Part A: True/False Questions
+::Part A - True/False (10 marks)::
+A fragment in OpenGL corresponds to a candidate pixel produced during rasterization, containing color, depth, and other interpolated data.{T}
+
+The old fixed-function OpenGL pipeline had built-in concepts like glMatrixMode, glTranslatef, and glRotatef for transformations, but these are not available in the modern core-profile pipeline.{T}
+
+In OpenGL, the winding order of a triangle's vertices (clockwise vs counter-clockwise as seen from the camera) can determine whether the triangle is considered a front-face or back-face.{T}
+
+A single call to glDrawArrays(GL_TRIANGLES, ...) with a proper vertex buffer can render multiple triangles.{T}
+
+In a typical vertex shader, you compute gl_Position by multiplying the vertex's position by the Model-View-Projection matrix.{T}
+
+If a vertex's clip-space coordinates after the projection transform are (2, 2, 0.5, 1), that vertex will be outside the normalized device coordinate (NDC) cube and will be clipped or discarded.{T}
+
+The aspect ratio in a perspective projection refers to the ratio of the field of view angles in horizontal vs vertical directions.{F}
+
+A shear transformation can be represented by a matrix and is considered an affine transform.{T}
+
+OpenGL's default coordinate system and view volume expect the near plane distance to be positive (greater than 0) for perspective projections.{T}
+
+The output of the fragment shader can include a depth value (gl_FragDepth) to override the default interpolated depth.{T}
+
+// Part B: Multiple Choice Questions
+::Part B - Multiple Choice (10 marks)::
+Which of these points (given in clip coordinates before perspective divide) would be completely outside the canonical view volume and thus get clipped? (Assume w is positive unless stated otherwise.){
+=(0.5, 1.2, 0.3, 1) – where x=0.5, y=1.2
+~(-0.9, -0.5, 0.2, 1) – where x=-0.9, y=-0.5
+~(1.5, 0.0, 0.5, 2) – after divide this is (0.75, 0.0, 0.25)
+~(0.0, -0.7, -0.8, 1) – within range
+}
+
+Which statement best describes world coordinates in the context of computer graphics?{
+=World coordinates are a common reference frame in which all objects in the scene are placed (the result after each object's model transform).
+~World coordinates are the coordinates relative to the camera's position and orientation.
+~World coordinates are the 2D pixel coordinates on the screen.
+~World coordinates refer to the object's local coordinate system before any transforms.
+}
+
+In OpenGL, normalized device coordinate (NDC) depth ranges from:{
+=-1 (at the near plane) to +1 (at the far plane)
+~0 (at the near plane) to 1 (at the far plane)
+~-∞ to +∞
+~0 to 255
+}
+
+During rasterization, the GPU:{
+=Linearly interpolates vertex attributes across the primitive's surface
+~Computes lighting for each fragment
+~Performs depth testing
+~All of the above
+}
+
+To pass data from the vertex shader to the fragment shader, you:{
+=Declare an output in the vertex shader and a matching input in the fragment shader
+~Use a uniform variable
+~Use a fragment shader variable in the vertex shader
+~Pass the data through gl_Position
+}
+
+To use the depth buffer for hidden surface removal, you must:{
+=Enable depth testing with glEnable(GL_DEPTH_TEST)
+~Enable face culling with glEnable(GL_CULL_FACE)
+~Set the depth mask to false
+~Enable blending
+}
+
+To display the rendered image in a double-buffered context, you call:{
+=glutSwapBuffers() (or equivalent)
+~glFlush()
+~glFinish()
+~glClear()
+}
+
+In GLSL, a 3-component float vector is declared as:{
+=vec3
+~float3
+~vector3
+~mat3
+}
+
+The framebuffer is:{
+=The memory buffer containing the image that will be displayed
+~A data structure for storing scene objects
+~A queue of GPU commands
+~A buffer for keyboard input
+}
+
+In legacy GLSL (before shader #version 330 core), gl_FragColor:{
+=Is a built-in variable that the fragment shader writes to set the output color
+~Contains the texture color by default
+~Is read-only
+~Is only used in vertex shaders
+} 
