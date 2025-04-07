@@ -22,7 +22,90 @@ const quizzes = {
             // Add more questions from quiz1_gift.txt
         ]
     },
-    // Add more quizzes
+    2: {
+        title: "Quiz 2 - Transformations, Matrices",
+        questions: [
+            {
+                type: "true-false",
+                text: "The Model matrix transforms vertices from model space (local to the object) to world space.",
+                correct: true
+            },
+            {
+                type: "multiple-choice",
+                text: "Which of these is NOT a valid operation in affine geometry?",
+                options: [
+                    "Adding a vector to a point",
+                    "Subtracting two points to get a vector",
+                    "Adding two points",
+                    "Scaling a vector"
+                ],
+                correct: 2
+            }
+        ]
+    },
+    3: {
+        title: "Quiz 3 - Rasterization, Shaders",
+        questions: [
+            {
+                type: "true-false",
+                text: "In modern OpenGL, shaders are written in GLSL (OpenGL Shading Language) and must be compiled before use.",
+                correct: true
+            },
+            {
+                type: "multiple-choice",
+                text: "What is the purpose of the w component in homogeneous coordinates?",
+                options: [
+                    "To represent time in animations",
+                    "To distinguish between points and vectors",
+                    "To store texture coordinates",
+                    "To represent color intensity"
+                ],
+                correct: 1
+            }
+        ]
+    },
+    4: {
+        title: "Quiz 4 - Geometry, Viewing",
+        questions: [
+            {
+                type: "true-false",
+                text: "The view matrix transforms vertices from world space to eye space, where the camera is at the origin looking down the negative z-axis.",
+                correct: true
+            },
+            {
+                type: "multiple-choice",
+                text: "In a perspective projection, what happens to parallel lines in the scene?",
+                options: [
+                    "They remain parallel in the projected image",
+                    "They converge to a vanishing point",
+                    "They become curved",
+                    "They disappear"
+                ],
+                correct: 1
+            }
+        ]
+    },
+    5: {
+        title: "Quiz 5 - Modern OpenGL, Buffers",
+        questions: [
+            {
+                type: "true-false",
+                text: "In OpenGL, the stencil buffer can be used to create complex masking effects and control which fragments are drawn.",
+                correct: true
+            },
+            {
+                type: "multiple-choice",
+                text: "What is the purpose of the stencil buffer in OpenGL?",
+                options: [
+                    "To store depth values",
+                    "To store color values",
+                    "To control which fragments are drawn",
+                    "To store texture coordinates"
+                ],
+                correct: 2
+            }
+        ]
+    }
 };
 
 let currentQuiz = null;
