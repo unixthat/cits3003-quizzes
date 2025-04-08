@@ -1,7 +1,7 @@
 // Quiz data structure
 const quizzes = {
     1: {
-        title: "Quiz 1 - OpenGL Basics, Rendering Pipeline",
+        title: "Practice Mid-Semester Test 1",
         questions: [
             {
                 type: "true-false",
@@ -186,7 +186,7 @@ const quizzes = {
         ]
     },
     2: {
-        title: "Quiz 2 - Transformations, Matrices",
+        title: "Practice Mid-Semester Test 2",
         questions: [
             {
                 type: "true-false",
@@ -371,7 +371,7 @@ const quizzes = {
         ]
     },
     3: {
-        title: "Quiz 3 - Rasterization, Shaders",
+        title: "Practice Mid-Semester Test 3",
         questions: [
             {
                 type: "true-false",
@@ -556,7 +556,7 @@ const quizzes = {
         ]
     },
     4: {
-        title: "Quiz 4 - Geometry, Viewing",
+        title: "Practice Mid-Semester Test 4",
         questions: [
             {
                 type: "true-false",
@@ -741,7 +741,7 @@ const quizzes = {
         ]
     },
     5: {
-        title: "Quiz 5 - Modern OpenGL, Buffers",
+        title: "Practice Mid-Semester Test 5",
         questions: [
             {
                 type: "true-false",
@@ -1049,30 +1049,30 @@ function showQuizList() {
     const container = document.querySelector('.container');
     container.innerHTML = `
         <header>
-            <h1>CITS3003 Computer Graphics Quizzes</h1>
-            <p>Select a quiz to begin</p>
+            <h1>CITS3003 Computer Graphics Practice Tests</h1>
+            <p>Select a practice test to begin</p>
         </header>
         
         <div class="quiz-list">
             <div class="quiz-card" onclick="loadQuiz(1)">
-                <h2>Quiz 1</h2>
+                <h2>Practice Test 1</h2>
                 <p>Topics: OpenGL Basics, Rendering Pipeline</p>
             </div>
             <div class="quiz-card" onclick="loadQuiz(2)">
-                <h2>Quiz 2</h2>
-                <p>Topics: Transformations, Matrices</p>
+                <h2>Practice Test 2</h2>
+                <p>Topics: Transformations and Coordinate Systems</p>
             </div>
             <div class="quiz-card" onclick="loadQuiz(3)">
-                <h2>Quiz 3</h2>
-                <p>Topics: Rasterization, Shaders</p>
+                <h2>Practice Test 3</h2>
+                <p>Topics: Shaders and Graphics Pipeline</p>
             </div>
             <div class="quiz-card" onclick="loadQuiz(4)">
-                <h2>Quiz 4</h2>
-                <p>Topics: Geometry, Viewing</p>
+                <h2>Practice Test 4</h2>
+                <p>Topics: Modern OpenGL and Buffers</p>
             </div>
             <div class="quiz-card" onclick="loadQuiz(5)">
-                <h2>Quiz 5</h2>
-                <p>Topics: Modern OpenGL, Buffers</p>
+                <h2>Practice Test 5</h2>
+                <p>Topics: Advanced OpenGL Concepts</p>
             </div>
         </div>
     `;
