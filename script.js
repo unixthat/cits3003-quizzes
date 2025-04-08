@@ -1054,22 +1054,11 @@ function showQuizList() {
         </header>
         
         <div class="quiz-list">
-            <div class="quiz-card" onclick="loadQuiz(1)">
-                <h2>Practice Test 1</h2>
-            </div>
-            <div class="quiz-card" onclick="loadQuiz(2)">
-                <h2>Practice Test 2</h2>
-            </div>
-            <div class="quiz-card" onclick="loadQuiz(3)">
-                <h2>Practice Test 3</h2>
-            </div>
-            <div class="quiz-card" onclick="loadQuiz(4)">
-                <h2>Practice Test 4</h2>
-            </div>
-            <div class="quiz-card" onclick="loadQuiz(5)">
-                <h2>Practice Test 5</h2>
-            </div>
-            </div>
+            ${Object.entries(quizzes).map(([id, quiz]) => `
+                <div class="quiz-card" onclick="loadQuiz(${id})">
+                    <h2>${quiz.title}</h2>
+                </div>
+            `).join('')}
         </div>
     `;
 }
