@@ -1,5 +1,5 @@
 // Import quiz data
-import quizzes from './quizData.js';
+import quizData from './quizData.js';
 
 /**
  * @typedef {Object} State
@@ -37,7 +37,7 @@ const saveProgress = () => {
  * @throws {Error} If quiz number is invalid
  */
 const loadQuiz = (quizNumber) => {
-    const quiz = quizzes[quizNumber];
+    const quiz = quizData[quizNumber];
     if (!quiz) {
         throw new Error('Quiz not found!');
     }
@@ -86,7 +86,7 @@ const renderQuiz = (quiz) => {
  * Shows the current question
  */
 const showQuestion = () => {
-    const quiz = quizzes[state.currentQuiz];
+    const quiz = quizData[state.currentQuiz];
     if (!quiz) return;
 
     const question = quiz.questions[state.currentQuestionIndex];
@@ -189,7 +189,7 @@ window.previousQuestion = previousQuestion;
  * Navigates to the next question
  */
 const nextQuestion = () => {
-    const quiz = quizzes[state.currentQuiz];
+    const quiz = quizData[state.currentQuiz];
     if (!quiz) return;
 
     if (state.currentQuestionIndex < quiz.questions.length - 1) {
@@ -205,7 +205,7 @@ window.nextQuestion = nextQuestion;
  * Calculates the quiz score and displays results
  */
 const submitQuiz = () => {
-    const quiz = quizzes[state.currentQuiz];
+    const quiz = quizData[state.currentQuiz];
     const score = calculateScore(quiz);
     const percentage = (score / quiz.questions.length) * 100;
 
@@ -244,7 +244,7 @@ const renderResults = (score, total, percentage) => {
     const container = document.querySelector('.container');
     if (!container) return;
 
-    const quiz = quizzes[state.currentQuiz];
+    const quiz = quizData[state.currentQuiz];
     const resultsTable = generateResultsTable(quiz);
 
     container.innerHTML = `
@@ -341,7 +341,7 @@ const showQuizList = () => {
         </header>
         
         <div class="quiz-list">
-            ${Object.entries(quizzes).map(([id, quiz]) => `
+            ${Object.entries(quizData).map(([id, quiz]) => `
                 <div class="quiz-card" onclick="loadQuiz(${id})">
                     <h2>${quiz.title}</h2>
                 </div>
