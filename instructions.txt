@@ -1,0 +1,78 @@
+# Instructions for Creating Quiz Data Files
+
+## General Guidelines
+1. Each quiz file should follow the same structure as the existing files (quizDataW1.js, quizDataW2.js, etc.)
+2. Validate the number of questions at the start and end of each quiz parsing process
+3. Ensure consistent formatting across all files
+4. Include detailed explanations for each answer
+5. Maintain proper JavaScript syntax and export statements
+
+## File Structure
+Each quiz file should contain:
+```javascript
+const quizData = {
+  "Week X": {  // or "Quiz X" for quizDataQn.js files
+    title: "Week X Quiz: [Topic]",
+    questions: [
+      {
+        type: "multiple-choice" or "true-false",
+        text: "Question text",
+        options: ["Option 1", "Option 2", "Option 3", "Option 4"],  // for multiple-choice only
+        correctAnswerIndex: 0,  // index of correct option or 0/1 for true/false
+        explanation: "Detailed explanation of the correct answer"
+      },
+      // ... more questions
+    ]
+  }
+};
+
+export default quizData;
+```
+
+## Specific Instructions for Each File
+
+### quizDataW6.js
+1. Read the content from split_quizzes/quiz6.md
+2. Count the number of questions in the file
+3. Read the answer key from split_quizzes/quiz6_answers.md
+4. Create the file with the title "Week 6 Quiz: More on Callbacks continued, Computer Viewing & Projection"
+5. Format each question with its type, text, options (if multiple-choice), correct answer, and explanation
+6. Verify the total number of questions matches the count from step 2
+7. Export the quiz data
+
+### quizDataQ1.js through quizDataQ5.js
+1. Read the content from split_quizzes_2/quiz1.md through quiz5.md
+2. Count the number of questions in each file
+3. Read the corresponding answer keys from split_quizzes_2/quiz1_answers.md through quiz5_answers.md
+4. Create each file with the appropriate title from the quiz content
+5. Format each question with its type, text, options (if multiple-choice), correct answer, and explanation
+6. Verify the total number of questions matches the count from step 2
+7. Export the quiz data
+
+## Validation Steps
+For each quiz file:
+1. Count questions in the source markdown file before parsing
+2. Count questions in the created JavaScript file after parsing
+3. Ensure both counts match
+4. Verify that all questions have:
+   - A valid type ("multiple-choice" or "true-false")
+   - Question text
+   - Options array (for multiple-choice questions)
+   - A correct answer index
+   - An explanation
+5. Check that the file exports the quiz data correctly
+
+## File Naming Convention
+- Week quizzes: quizDataW1.js through quizDataW6.js
+- Practice quizzes: quizDataQ1.js through quizDataQ5.js
+
+## Completion Checklist
+- [ ] quizDataW6.js created and validated
+- [ ] quizDataQ1.js created and validated
+- [ ] quizDataQ2.js created and validated
+- [ ] quizDataQ3.js created and validated
+- [ ] quizDataQ4.js created and validated
+- [ ] quizDataQ5.js created and validated
+- [ ] All files follow consistent formatting
+- [ ] All questions have proper explanations
+- [ ] Question counts match between source and created files 

@@ -1,0 +1,1106 @@
+
+
+
+# Master Quiz 1
+
+1. In computer graphics, **ray tracing** is an alternative rendering approach that traces rays of light to produce images, unlike OpenGL’s pipeline which uses a synthetic camera model and rasterization.  
+    - a) True  
+    - b) False
+
+2. A pinhole camera produces an image that is always in perfect focus but admits very little light, resulting in the need for **long exposure times**.  
+    - a) True  
+    - b) False
+
+3. Which of the following uses a **subtractive** color model (as opposed to additive)?  
+    - a) CRT or LED computer monitor  
+    - b) Digital projector  
+    - c) Inkjet printer  
+    - d) OLED display
+
+4. Which statement is **true** about OpenGL’s synthetic camera model?  
+    - a) The image plane is placed behind the camera, similar to a real pinhole camera.  
+    - b) It requires simulating physical light transport (ray physics) for image generation.  
+    - c) Objects, viewer (camera), and lights can be specified independently of each other.  
+    - d) It produces an upside-down (inverted) image by default, which must be corrected in software.
+
+5. Choose the **incorrect** statement regarding OpenGL:  
+    - a) OpenGL provides built-in functions to create windows and handle input events.  
+    - b) OpenGL is a specification that defines a platform-independent API for graphics hardware.  
+    - c) Graphics card vendors implement OpenGL functionality in their drivers.  
+    - d) Modern OpenGL (core profile) requires the use of shader programs for rendering.
+
+6. Which of these is **NOT** a primitive type supported by modern OpenGL?  
+    - a) GL_POINTS  
+    - b) GL_TRIANGLE_STRIP  
+    - c) GL_LINE_LOOP  
+    - d) GL_QUADS
+
+7. A **concave** polygon (non-convex polygon) has which characteristic?  
+    - a) All interior angles are less than or equal to 180°.  
+    - b) It must have self-intersecting edges.  
+    - c) It has at least one interior angle greater than 180°.  
+    - d) It cannot be rendered at all using OpenGL.
+
+8. In the OpenGL pipeline, which task is performed during the **primitive assembly** stage?  
+    - a) Clipping away parts of primitives outside the view volume.  
+    - b) Converting vertices into assembled geometric primitives (points, lines, triangles).  
+    - c) Dividing each vertex’s coordinates by *w* to normalize device coordinates.  
+    - d) Computing the color of each pixel fragment.
+
+9. In which coordinate system is the camera located at the origin looking along the negative Z-axis (by convention)?  
+    - a) Model (object) coordinates  
+    - b) World coordinates  
+    - c) Eye (camera) coordinates  
+    - d) Window (screen) coordinates
+
+10. Which transformation **does not change the shape or size** of an object?  
+    - a) Rotation  
+    - b) Translation  
+    - c) Non-uniform scaling  
+    - d) Shear (skew)
+
+11. Which of the following operations is **not defined** in an affine point-vector space?  
+    - a) Point + Point  
+    - b) Point – Point  
+    - c) Point + Vector  
+    - d) Vector + Vector
+
+12. Which stage in the OpenGL pipeline is executed for every generated fragment (pixel) of a primitive?  
+    - a) Vertex Shader  
+    - b) Geometry Shader  
+    - c) Fragment Shader  
+    - d) Tessellation Shader
+
+13. Which statement about GLSL (OpenGL Shading Language) is **correct**?  
+    - a) It allows low-level pointer arithmetic like C/C++.  
+    - b) It provides built-in vector and matrix data types (e.g., `vec3`, `mat4`).  
+    - c) It uses the exact same compiler as C/C++ for shader code.  
+    - d) Shader programs written in GLSL run on the CPU, not the GPU.
+
+14. Given a definition `vec4 color = vec4(1, 2, 3, 4);`, which of the following swizzle operations is **invalid** in GLSL?  
+    - a) `color.xy` (accesses the x and y components as a vec2)  
+    - b) `color.xx` (repeats the x component to form a vec2)  
+    - c) `color.zyx` (reorders components to z, y, x)  
+    - d) `color.xrg` (mixes component name sets)
+
+15. Whose of the OpenGL function `glBufferSubData`?  
+    - a) To create a new buffer object and initialize it with data.  
+    - b) To bind a buffer object to a shader variable.  
+    - c) To update a portion of an existing buffer object’s data store.  
+    - d) To subdivide a complex primitive into smaller ones.
+
+16. Which of these best describes a Vertex Array Object (VAO) in modern OpenGL?  
+    - a) An array that holds all vertex data (positions, colors, etc.) in one contiguous block.  
+    - b) An object that stores the state of vertex attribute configurations (which VBOs and attributes are enabled).  
+    - c) A shader program used for processing arrays of vertices.  
+    - d) An old fixed-function mechanism for storing trans
+
+17. Which of the following is **true** regarding viewports in OpenGL?  
+    - a) Only one viewport can ever be used per application.  
+    - b) You can call `glViewport` multiple times in one frame to render to different regions of the window.  
+    - c) The viewport transformation is applied in the vertex shader.  
+    - d) The viewport always covers the entire window and cannot be changed.
+
+18. Which pairing of a physical input and its logical input device type is **correct**?  
+    - a) Moving a mouse continuously – **Stroke** device  
+    - b) Pressing keys on a keyboard – **Locator** device  
+    - c) Clicking on a displayed object – **Pick** device  
+    - d) Choosing an item from a menu – **String** device
+
+19. Which of the following is **true** about callback functions in an event-driven OpenGL/GLUT program?  
+    - a) The programmer must call these functions manually whenever an event occurs.  
+    - b) They are utility functions provided by OpenGL to draw common shapes.  
+    - c) They are registered with GLUT and called automatically by the system when the corresponding event happens.  
+    - d) Only one callback function can be registered in a program (additional registrations are ignored).
+
+20. Every window created by GLUT has its own OpenGL rendering context (with its own state, resources, etc.).  
+    - a) True  
+    - b) False
+
+21. Regarding GLSL shader variables, which statement is **correct**?  
+    - a) An `in` variable in a fragment shader receives interpolated data from the vertex shader’s outputs.  
+    - b) A `uniform` variable is set within the shader code and cannot be changed by the application.  
+    - c) Varying variables (outputs from vertex shader) automatically appear in the fragment shader without declaration.  
+    - d) The `gl_Position` built-in variable is used in the fragment shader to determine fragment location.
+
+22. Calling `glutMainLooUT program will enter an event-processing loop that does not return until the program exits.  
+    - a) True  
+    - b) False
+
+23. Which stage of the pipeline determines which fragments (pixels) lie inside a given primitive (essentially filling in the primitive)?  
+    - a) Vertex Shading  
+    - b) Primitive Assembly  
+    - c) Rasterization  
+    - d) Blending
+
+24. In GLSL, using the `discard` keyword in a fragment shader will…  
+    - a) Skip processing the remaining vertices in the primitive.  
+    - b) Omit the current fragment, so it will not be drawn to the framebuffer.  
+    - c) Flush all pending drawing commands on the GPU.  
+    - d) Unbind the currently bound texture.
+
+25. Which type of projection causes objects to appear the **same size regardless of distance** from the camera?  
+    - a) Orthographic projection  
+    - b) Perspective projection  
+    - c) Pinhole (perspective) camera projection  
+    - d) None – distance always affects perceived size
+
+<br>
+
+# Master Quiz 2
+
+1. The appearance (color and brightness) of objects in a rendered scene is affected by the scene’s light sources and material properties.  
+    - a) True  
+    - b) False
+
+2. **Rod** cells in the human eye enable night (low-light) vision but do not contribute to color perception, whereas **cone** cells are responsible for color vision under brighter light.  
+    - a) True  
+    - b) False
+
+3. Which of the following is an **additive** primary color used in displays?  
+    - a) Red  
+    - b) Yellow  
+    - c) Cyan  
+    - d) Magenta
+
+4. Which statement about modern OpenGL (Core profile 3.3+ and above) is **true**?  
+    - a) You can render without shaders using the old fixed-function pipeline if you prefer.  
+    - b) You must use Vertex Array Objects (VAOs) and buffer objects to send geometry data to the GPU.  
+    - c) The `glBegin/glEnd` immediate mode is still commonly used for efficiency.  
+    - d) The projection and modelview matrices are built-in and managed by OpenGL automatically.
+
+5. Which of these statements about GLUT is **false**?  
+    - a) GLUT provides a cross-platform way to create an OpenGL window and context.  
+    - b) GLUT handles keyboard and mouse input and exposes them via callbacks.  
+    - c) GLUT is part of the official OpenGL specification and library.  
+    - d) GLUT is intended for simple demos and is not a full-fledged GUI toolkit.
+
+6. Which OpenGL primitive should be used to draw a connected series of line segments (each vertex connected to the next in order)?  
+    - a) GL_LINE_LOOP  
+    - b) GL_TRIANGLE_FAN  
+    - c) GL_LINE_STRIP  
+    - d) GL_LINES
+
+7. What must an application do to render a **concave** polygon (one that is not convex) in OpenGL?  
+    - a) Tessellate the polygon into a set of triangles before rendering.  
+    - b) Use a special OpenGL primitive for concave polygons.  
+    - c) Render it as a single GL_POLYGON without modification.  
+    - d) OpenGL automatically detects and subdivides concave polygons.
+
+8. During the rendering pipeline, how are primitives partly outside the view frustum handled?  
+    - a) They are completely discarded (not drawn at all).  
+    - b) They are **clipped**, so only the portions inside the view volume are kept and drawn.  
+    - c) They are drawn in full, but the parts outside simply aren’t visible on screen.  
+    - d) The pipeline renders them at lower resolution outside the frustum.
+
+9. In normalized device coordinates (after perspective division), what is the range of X, Y, and Z for points that are inside the view volume?  
+    - a) 0 to 1  
+    - b) –1 to 1  
+    - c) –0.5 to 0.5  
+    - d) –100 to 100
+
+10. Which transformation is **not rigid** (i.e. does **not** preserve both shape and size)?  
+    - a) Rotation about the origin  
+    - b) Translation along an axis  
+    - c) Uniform scaling (same scale factor in all directions)  
+    - d) Non-uniform scaling (different scale factors for axes)
+
+11. To define a **coordinate frame** in 3D space, you need:  
+    - a) One origin point and three mutually perpendicular basis vectors.  
+    - b) One reference point and one direction vector.  
+    - c) Any three non-collinear points.  
+    - d) A grid drawn along each axis.
+
+12. In homogeneous coordinates, how is a translation by (t<sub>x</sub>, t<sub>y</sub>, t<sub>z</sub>) typically represented as a matrix (using column-vector convention)?  
+    - a) A 3×3 matrix added to the point coordinates after transformation.  
+    - b) A 4×4 matrix with t<sub>x</sub>, t<sub>y</sub>, t<sub>z</sub> in the **last column**, and 1 in the bottom-right corner.  
+    - c) A 4×4 matrix with t<sub>x</sub>, t<sub>y</sub>, t<sub>z</sub> in the bottom row.  
+    - d) It’s impossible to represent translation with a matrix multiplication.
+
+13. In GLSL, a `uniform` variable declared in a shader…  
+    - a) …stays constant for all vertices/fragments for a given draw call, and is set by the application (not by the shader code).  
+    - b) …has the same meaning as a C `static` variable and cannot be changed at runtime.  
+    - c) …is a variable that linearly interpolates between vertices.  
+    - d) …must be an integer type.
+
+14. Which of these is **NOT** a built-in variable provided by GLSL (assuming modern shader usage)?  
+    - a) `gl_Position` (in vertex shader)  
+    - b) `gl_FragCoord` (in fragment shader)  
+    - c) `gl_FragColor` (fragment color output)  
+    - d) `gl_VertexPointer`
+
+15. What is the **main output** of a fragment shader in the OpenGL pipeline?  
+    - a) The final color (and optionally depth) for the fragment.  
+    - b) A transformed vertex position.  
+    - c) A new set of vertices to add to the scene.  
+    - d) There is no output; fragment shaders only perform calculations with no output.
+
+16. A vertex shader **cannot** do which of the following?  
+    - a) Transform the position of a vertex.  
+    - b) Output a custom varying (out) variable (e.g., a color) for interpolation.  
+    - c) Discard an entire primitive on its own.  
+    - d) Access a uniform variable provided by the application.
+
+17. Calling `glGenBuffers(1, &bufferID)` in OpenGL immediately allocates GPU memory for a new buffer object.  
+    - a) True  
+    - b) False
+
+18. Typically, what is stored in a **Vertex Buffer Object (VBO)**?  
+    - a) Vertex attribute data such as positions, normals, texture coordinates, etc.  
+    - b) Compiled shader programs.  
+    - c) CPU-based arrays of vertices that are accessed directly by the CPU during drawing.  
+    - d) The list of OpenGL commands (display list) for rendering a scene.
+
+19. Which logical input device category best describes standard **keyboard input** in an interactive graphics program?  
+    - a) **String** device (returns characters or strings)  
+    - b) **Locator** device (returns a position)  
+    - c) **Pick** device (returns an ID of a selected item)  
+    - d) **Valuator** device (returns a continuous value)
+
+20. Which GLUT function registers a callback to handle **window redraw** requests (i.e., painting the window’s contents)?  
+    - a) `glutDisplayFunc(myDisplayFunc)`  
+    - b) `glutIdleFunc(myIdleFunc)`  
+    - c) `glutReshapeFunc(myReshapeFunc)`  
+    - d) `glutMotionFunc(myMotionFunc)`
+
+21. The GLUT **idle** callback (registered via `glutIdleFunc`) can be used to continuously update or animate the scene when no other events are happening.  
+    - a) True  
+    - b) False
+
+22. In a double-buffered OpenGL context using GLUT, you typically call `glutSwapBuffers()` at the end of your display callback to swap the drawn frame to the screen.  
+    - a) True  
+    - b) False
+
+23. A rotation about the Z-axis (by some angle θ) will affect the x- and y-coordinates of a point but leave its z-coordinate unchanged.  
+    - a) True  
+    - b) False
+
+24. Enabling depth testing (e.g., via `glEnable(GL_DEPTH_TEST)`) is necessary to ensure that closer objects correctly occlude farther objects in a 3D scene.  
+    - a) True  
+    - b) False
+
+25. The function `glClearColor(r, g, b, a)` sets the color to be used when clearing the window.  
+    - a) True  
+    - b) False
+
+<br>
+
+# Master Quiz 3
+
+1. If a scene in OpenGL has **no light sources**, objects rendered with a typical lighting shader will appear completely black.  
+    - a) True  
+    - b) False
+
+2. Printing devices (e.g., an inkjet printer) use the **Cyan, Magenta, Yellow** color system, which is a subtractive color model.  
+    - a) True  
+    - b) False
+
+3. Which statement is true color vision**?  
+    - a) Humans have three types of cone cells, each sensitive to different ranges of wavelengths (roughly corresponding to red, green, and blue light).  
+    - b) Rod cells in the eye are responsible for perceiving colors in bright light.  
+    - c) We need a distinct primary color for every possible visible wavelength to reproduce all colors.  
+    - d) Humans have four primary color receptors, which is why CMYK is used for all displays.
+
+4. OpenGL’s camera uses a synthetic pinhole model where the projection plane is placed in front of the camera’s center of projection, resulting in an upright (non-inverted) image.  
+    - a) True  
+    - b) False
+
+5. OpenGL is often described as a **state machine** API: functions like `glEnable` or `glColor3f` set persistent states that remain until changed, affecting subsequent rendering calls.  
+    - a) True  
+    - b) False
+
+6. Which of the following statements about OpenGL is **false**?  
+    - a) OpenGL commands are executed on the GPU (via the graphics driver).  
+    - b) OpenGL can be used for both 2D and 3D graphics rendering.  
+    - c) OpenGL automatically handles physics and collision simulations for rendered objects.  
+    - d) OpenGL is cross-platform, available on various operating systems given appropriate drivers.
+
+7. GLUT (OpenGL Utility Toolkit) is a library used to create windows and handle input events in OpenGL programs in a platform-independent way.  
+    - a) True  
+    - b) False
+
+8. To draw a connected series of line segments between a list of points (each point connected to the next), you should use:  
+    - a) `GL_LINE_LOOP`  
+    - b) `GL_LINE_STRIP`  
+    - c) `GL_TRIANGLE_STRIP`  
+    - d) `GL_LINES`
+
+9. Any three non-collinear points define a triangle, and a triangle is always a simple, convex polygon.  
+    - a) True  
+    - b) False
+
+10. OpenGL core (modern OpenGL) does not directly support drawing arbitrary filled polygons with more than three vertices; all complex surfaces must be composed of triangles.  
+    - a) True  
+    - b) False
+
+11. Which pipeline stage is responsible for applying **model and view transformations** to vertices (typically combining them into a model-view transform)?  
+    - a) The application (CPU) before sending vertices  
+    - b) The Vertex Processing stage (Vertex Shader)  
+    - c) The Rasterizer stage  
+    - d) The Fragment Processing stage
+
+12. The **view transformation** (camera transform) is effectively the inverse of the camera’s movement and brings world coordinates into the camera’s coordinate system (eye space).  
+    - a) True  
+    - b) False
+
+13. After projection and the perspective divide, which coordinate space are vertices in?  
+    - a) Model space  
+    - b) World space  
+    - c) Normalized Device Coordinate (NDC) space  
+    - d) Eye (camera) space
+
+14. Which transformation is **affine** but *not* rigid?  
+    - a) Rotation about the origin  
+    - b) Translation  
+    - c) Uniform scaling (same scale on X, Y, Z)  
+    - d) Non-uniform scaling (different scales, e.g., stretch)
+
+15. In homogeneous coordinates, a vector (direction) can be represented with **w = 0**, indicating it has no fixed position (points at infinity).  
+    - a) True  
+    - b) False
+
+16. Which of the following is a valid data type in GLSL?  
+    - a) `vec5` (5-component vectoatrix)  
+    - c) `int3` (3-component integer vector)  
+    - d) `bool4` (4-component boolean vector)
+
+17. Which statement is **true** regarding the order of shader execution in the pipeline?  
+    - a) The fragment shader executes once per triangle.  
+    - b) The fragment shader runs after rasterization to determine each fragment’s color.  
+    - c) The vertex shader can access the results of the fragment shader.  
+    - d) The vertex shader can emit new primitives on its own.
+
+18. GLSL (the OpenGL Shading Language) does not support pointer arithmetic or explicit memory address manipulation.  
+    - a) True  
+    - b) False
+
+19. What **must** a vertex shader do to ensure a vertex is correctly placed in the scene?  
+    - a) Compute and set the special built-in variable `gl_Position` (clip-space position of the vertex).  
+    - b) Compute and set `gl_FragColor` for that vertex.  
+    - c) Sample textures to get the vertex coordinates.  
+    - d) Output a point size via `gl_PointSize` for every vertex, regardless of primitive type.
+
+20. To use a Vertex Array Object (VAO) in OpenGL, you must bind it with `glBindVertexArray` before setting up vertex attribute pointers or drawing with it.  
+    - a) True  
+    - b) False
+
+21. Selecting an item from a menu (where the program receives an identifier for the chosen item) is an example of which logical input device type?  
+    - a) **Choice** device  
+    - b) **Pick** device  
+    - c) **Locator** device  
+    - d) **String** device
+
+22. A **locator** device is one that provides a coordinate in space, typically from a pointing device (like a mouse giving an (x,y) position).  
+    - a) True  
+    - b) False
+
+23. The GLUT reshape callback (registered via `glutReshapeFunc`) is called when:  
+    - a) The window is resized, providing the new width and height.  
+    - b) A timer event occurs after a specified interval.  
+    - c) The mouse is moved.  
+    - d) a key is pressed on the keyboard.
+
+24. If you do **not** register a display callback with GLUT (i.e., never call `glutDisplayFunc`), the window will either remain blank or not update because no rendering function is defined.  
+    - a) True  
+    - b) False
+
+25. A “stroke” logical input device is one that returns a series of points (for example, tracing the path of a stylus or mouse drag).  
+    - a) True  
+    - b) False
+
+<br>
+
+# Master Quiz 4
+
+1. What is the correct order of coordinate transformations for a vertex going from model space to screen space in OpenGL?  
+    - a) Model transform → View (camera) transform → Projection transform → Perspective divide (normalize) → Viewport mapping to screen  
+    - b) View (camera) transform → Model transform → Projection transform → Viewport mapping → Perspective divide  
+    - c) Model transform → Projection transform → View transform → Perspective divide → Viewport mapping  
+    - d) Projection transform → Model transform → View transform → Viewport mapping → Perspective divide
+
+2. The visual appearance of a 3D object (how bright or what color it appears) typically depends on the lighting in the scene, the object’s material properties, and the viewing position.  
+    - a) True  
+    - b) False
+
+3. In a **perspective projection**, objects that are farther from the camera appear smaller in the rendered image than those that are closer.  
+    - a) True  
+    - b) False
+
+4. Which of the following is a characteristic of **ray tracing** (and not a default feature of the basic OpenGL pipeline)?  
+    - a) Automatic calculation of refefractions of light.  
+    - b) Use of a depth buffer (z-buffer) to handle visibility.  
+    - c) Transforming vertices by matrices to project them onto a view.  
+    - d) Use of Gouraud or Phong shading for lighting.
+
+5. A real pinhole camera forms an inverted image on its film/sensor, whereas OpenGL’s synthetic camera avoids image inversion by placing the projection plane in front of the camera.  
+    - a) True  
+    - b) False
+
+6. Which of these is **NOT** an actual OpenGL function or feature?  
+    - a) `glTranslatef` (translate transformation in old OpenGL)  
+    - b) `glEnable(GL_DEPTH_TEST)`  
+    - c) `glBegin(GL_TRIANGLES)`  
+    - d) `glRenderObject()` (render an object automatically)
+
+7. OpenGL by itself does **not** provide functions for creating windows or capturing input events; those tasks are handled by toolkits like GLUT, GLFW, or the operating system.  
+    - a) True  
+    - b) False
+
+8. What is the purpose of the **depth buffer** (Z-buffer) in rendering?  
+    - a) To perform hidden-surface removal by tracking the closest fragment depth at each pixel.  
+    - b) To store the color of each pixel on the screen.  
+    - c) To handle transparency and blending of colors.  
+    - d) To map texture coordinates to fragments.
+
+9. The model transformation moves objects from their local model coordinate space into the common world coordinate space.  
+    - a) True  
+    - b) False
+
+10. Which transformation leaves both the shape and size of an object unchanged?  
+    - a) Rotation about the object’s center  
+    - b) Non-uniform scaling  
+    - c) Uniform scaling  
+    - d) Shear (skew)
+
+11. Any combination of rotations, translations, and scalings (with non-zero scale factors) results in an affine transformation that is invertible (can be reversed).  
+    - a) True  
+    - b) False
+
+12. In a modern OpenGL program using shaders, vertex attribute data (positions, normals, etc.) is typically provided to the vertex shader via:  
+    - a) Buffer objects (VBOs) bound to vertex attribute pointers, set by the application.  
+    - b) Built-in constant variables on the GPU that hold common shapes.  
+    - c) The fragment shader, which passes them back to the vertex stage.  
+    - d) Automatic generation by OpenGL for standard objects (cube, sphere, etc.).
+
+13. The output of the vertex shader (e.g., varying variables like color or texture coordinates) is interpolated across the primitive during rasterization and passed into the fragment shader.  
+    - a) True  
+    - b) False
+
+14. Which of the following is **NOT** allowed in GLSL shader code?  
+    - a) Loop constructs like `for` and `while`.  
+    - b) Recursive function calls (a function calling itself).  
+    - c) Vector operations such as `dot(mat3, vec3)`.  
+    - d) Built-in math functions like `sin()` or `pow()`.
+
+15. In a fragment shader, `gl_FragCoord` is a built-in variable that gives the window (screen) coordinates of the fragment (including its depth value).  
+    - a) True  
+    - b) False
+
+16. `glBufferSubData` can be used to update a subset of data in an existing buffer object without reallocating the buffer.  
+    - a) True  
+    - b) False
+
+17. Which function specifies the format and location of vertex attribute data in the currently bound VBO (for use by the vertex shader)?  
+    - a) `glVertexAttribPointer`  
+    - b) `glBindVertexArray`  
+    - c) `glEnableVertexAttribArray`  
+    - d) `glBufferData`
+
+18. The GLUT **timer** callback, registered via `glutTimerFunc`, allows you to schedule a one-time callback after a specified delay (often used for animation timing).  
+    - a) True  
+    - b) False
+
+19. Which GLUT callback function is used to handle **mouse button press/release** events?  
+    - a) `glutMouseFunc`  
+    - b) `glutMotionFunc`  
+    - c) `glutPassiveMotionFunc`  
+    - d) `glutKeyboardFunc`
+
+20. The function passed to `glutKeyboardFunc` (for ASCII key events) receives, among other parameters, the (x, y) mouse coordinates at the time of the key press.  
+    - a) True  
+    - b) False
+
+21. When the user moves the mouse with a button pressed, GLUT can invoke the motion callback (registered via `glutMotionFunc`), whereas movement with no buttons pressed can trigger the passive motion callback (`glutPassiveMotionFunc`).  
+    - a) True  
+    - b) False
+
+22. Calling `glutPostRedisplay()` within an event callback will mark the window for redisplay, causing GLUT to call the display callback again on the next iteration of the event loop.  
+    - a) True  
+    - b) False
+
+23. Which of the following is a valid OpenGL primitive mode for rendering via `glDrawArrays`?  
+    - a) GL_POINTS  
+    - b) GL_CUBE  
+    - c) GL_SPHERE  
+    - d) GL_POLYGON_STRIP
+
+<br>
+
+# Master Quiz 5
+
+1. In a rendered scene, the appearance of objects is **not affected** by the light sources present.  
+    - a) True  
+    - b) False
+
+2. In OpenGL’s camera model, objects, light sources, and the viewer (camera) can be defined separately — their combined interaction produces the final rendered image.  
+    - a) True  
+    - b) False
+
+3. **Ray tracing** produces highly realistic images by simulating rays of light, but it is generally more computationally expensive than OpenGL’s real-time rasterization pipeline.  
+    - a) True  
+    - b) False
+
+4. OpenGL is essentially a specification/API, and the actual implementation of OpenGL functions is provided by your graphics hardware’s driver.  
+    - a) True  
+    - b) False
+
+5. When you call a drawing command like `glDrawArrays`, where does the rendering work happen?  
+    - a) On the GPU (graphics processing unit) via the graphics driver.  
+    - b) On the CPU in a separate thread created by OpenGL.  
+    - c) In a software renderer that OpenGL provides by default.  
+    - d) Directly on the display without involving the GPU or CPU.
+
+6. Modern OpenGL uses a **retained mode** approach (with buffers and shaders) instead of the old **immediate mode** (specifying vertices on the fly each frame).  
+    - a) True  
+    - b) False
+
+7. Which statement about GLUT is **true**?  
+    - a) GLUT makes OpenGL programs cross-platform by handling window creation and input events for you.  
+    - b) GLUT provides advanced GUI widgets (buttons, menus) as part of its toolkit.  
+    - c) GLUT is part of the core OpenGL library and is required to use OpenGL.  
+    - d) GLUT can only be used with the C programming language.
+
+8. Which stage of the OpenGL pipeline is responsible for breaking down primitives into **fragments** (pixels) for the fragment shader?  
+    - a) Primitive Assembly  
+    - b) Fragment Shading  
+    - c) Vertex Shading  
+    - d) Rasterization stage
+
+9. During rasterization, vertex outputs (varyings) like color or texture coordinates are interpolated to produce values for each fragment, before those fragments are processed by the fragment shader.  
+    - a) True  
+    - b) False
+
+10. **Clip coordinates** refer to the coordinates of vertices after the projection transformation has been applied but before the perspective divide by *w*.  
+    - a) True  
+    - b) False
+
+11. Which of the following is a property of an **affine transformation** in 3D?  
+    - a) It preserves straight lines (keeps points that were collinear still collinear after transformation).  
+    - b) It preserves all angles between vectors.  
+    - c) It cannot include translations (only rotation and scaling).  
+    - d) It is a non-linear (curved) mapping.
+
+12. The order of transformations matters: for example, applying a rotation then a translation generally gives a different result than applying the translation first and then the rotation.  
+    - a) True  
+    - b) False
+
+13. Shaders in modern OpenGL are most commonly written in:  
+    - a) GLSL (OpenGL Shading Language)  
+    - b) C++  
+    - c) Assembly language  
+    - d) HLSL
+
+14. A vertex shader **must** output a clip-space position for each vertex (usually by writing to `gl_Position`).  
+    - a) True  
+    - b) False
+
+15. Which is **NOT** a valid storage qualifier or keyword in GLSL?  
+    - a) `in`  
+    - b) `out`  
+    - c) `uniform`  
+    - d) `static`
+
+16. If you want to pass a computed value (e.g. a color) from your vertex shader to your fragment shader, you should:  
+    - a) Declare an output variable in the vertex shader and a matching input variable in the fragment shader to carry the value.  
+    - b) Use a `uniform` for the value so the fragment shader can see it.  
+    - c) Write it to a global variable that both shaders share automatically.  
+    - d) You cannot pass data from the vertex shader to fragment shader in OpenGL.
+
+17. A Vertex Array Object (VAO) stores the setup of vertex attribute pointers and associated buffer bindings so that the configuration can be easily reused for drawing.  
+    - a) True  
+    - b) False
+
+18. Binding a buffer ID of 0 (e.g., `glBindBuffer(GL_ARRAY_BUFFER, 0)`) has what effect?  
+    - a) It unbinds the currently bound array buffer (no vertex buffer is bound after that).  
+    - b) It binds a special default buffer with ID 0.  
+    - c) It resets or clears the current buffer’s data store.  
+    - d) It results in an error, since 0 is not a valid buffer.
+
+19. Which GLUT function allows you to handle special keyboard keys (like arrow keys or function keys) separately from regular character keys?  
+    - a) `glutSpecialFunc`  
+    - b) `glutKeyboardFunc`  
+    - c) `glutMouseFunc`  
+    - d) `glutArrowFunc`
+
+20. Calling `glutMainLoop()` hands control over to GLUT’s event processing loop, and code after `glutMainLoop()` in your `main()` will not execute (until the program terminates).  
+    - a) True  
+    - b) False
+
+21. Without a registered display callback in a GLUT program, nothing will be drawn to the window (the window will remain blank or static).  
+    - a) True  
+    - b) False
+
+22. Calling `glutPostRedisplay()` in an update or input callback will request a new frame draw, causing the display callback to be called on the next iteration of the event loop.  
+    - a) True  
+    - b) False
+
+23. Which of the following is **not** an actual primitive mode you can use with `glDrawArrays`?  
+    - a) GL_POINTS  
+    - b) GL_TRIANGLES  
+    - c) GL_POLYGON (in compatibility, draws a single convex polygon)  
+    - d) GL_SQUARES
+
+24. `glEnable(GL_DEPTH_TEST)` is used to turn on depth buffering, so that fragments that are behind others (farther from the camera) are discarded.  
+    - a) True  
+    - b) False
+
+25. Which function is used to set the **clear color** (the background color that the screen will be cleared to)?  
+    - a) `glClearColor(r, g, b, a)`  
+    - b) `glColor3f(r, g, b)`  
+    - c) `glBackgroundColor(r, g, b, a)`  
+    - d) `glClear(GL_COLOR_BUFFER_BIT, r, g, b)`
+
+<br>
+
+# Answer Keys
+
+## Master Quiz 1 Answer Key
+
+1. **b) False.** Ray tracing and OpenGL’s standard pipeline are fundamentally different. Ray tracing physically simulates rays of light to produce highly realistic images (with correct reflections, refractions, shadows, etc.), whereas OpenGL’s pipeline uses a synthetic camera and rasterization approach. The statement as given is *false* because it claims these approaches are the same. In reality, ray tracing is an alternative to the typical OpenGL pipeline, not something that OpenGL itself does by default.
+
+2. **a) True.** An ideal pinhole camera focuses an image perfectly (infinite depth of field), but because the aperture is just a tiny pinhole, almost no light gets through. This means images are very dim, and thus one must use a very long exposure time to collect enough light on the sensor/film. The statement accurately describes that trade-off: perfect focus (everything in focus) but extremely low light, requiring long exposures.
+
+3. **c) Inkjet printer.** Inkjet printers use **subtractive** color mixing: typically cyan, magenta, and yellow (often with black as CMYK) inks. These inks filter out portions of white light to produce colors. Options (a), (b), and (d) are display devices (CRT, digital projector, LED display) which use **additive** color mixing (red, green, blue light) and not subtractive. Therefore, the only correct choice is the printer, which uses subtractive primaries.
+
+4. **c) Objects, viewer, and lights can be specified independently of each other.** The synthetic camera model (used by OpenGL) allows you to define geometry, camera, and lighting separately. This is one of its advantages: these components are independent and combined by the system to form the image. 
+
+   - Option (a) is incorrect because OpenGL’s projection places the image plane in front of the camera (not behind), so that the image isn’t inverted.
+   - (b) is incorrect: OpenGL does **not** require simulating physical ray tracing; it uses a rasterization approach.
+   - (d) is incorrect because in the synthetic model the image comes out upright (not upside-down) due to that image plane placement in front of the lens.
+
+5. **a) is incorrect** (and thus the correct choice here). OpenGL by itself does **not** provide windowing or input routines – those are handled by libraries like GLUT/GLFW or platform APIs. Options (b), (c), and (d) are all true statements: OpenGL is indeed a specification/API for interfacing with GPUs, GPU vendors implement it in drivers, and it is designed to work with modern graphics hardware. Therefore, (a) is the odd one out, describing functionality OpenGL doesn’t have (window creation and resizing are typically done by aux libs, not by OpenGL core).
+
+6. **d) GL_QUADS.** Modern OpenGL (core profile 3.3+ and above) does not support the old `GL_QUADS` primitive – everything is generally rendered as points, lines, or triangles. In fact, OpenGL’s preferred polygon is the triangle. The other options are valid primitives: points, triangle strips, and line loops are supported modes. `GL_QUADS` was available in older OpenGL (compatibility profile) but not in modern core profile (and even in older versions, quads would internally be broken into triangles).
+
+7. **c) It has at least one interior angle greater than 180°.** By definition, a concave (non-convex) polygon will have an interior angle exceeding 180 degrees and a "dent" inward. This is equivalent to saying a line segment between two points of the polygon can fall outside of it. 
+
+   - (a) is a property of convex polygons (all angles ≤ 180°).
+   - (b) is incorrect: non-convex (concave) does *not* necessarily mean self-intersecting. A concave polygon can still be simple (no edges crossing).
+   - (d) is wrong: concave polygons *can* be rendered in OpenGL, but the application must handle them (e.g., by tessellation). So the key trait of concave polygons among these choices is the interior angle > 180°.
+
+8. **b) Converting vertices into assembled primitives.** The primitive assembly stage takes the processed vertices and groups them into primitives (points, lines, triangles) as specified by the drawing call. For example, if you call `glDrawArrays` with `GL_TRIANGLES`, primitive assembly will collect each trio of vertices into a triangle.
+
+   - Clipping (a) typically happens right after assembly (or as part of it, depending on definition, but usually described as a separate stage).
+   - Perspective divide (c) happens after the projection transformation, not during assembly.
+   - Computing fragment colors (d) is the job of the fragment shader stage, **after** rasterization. So (b) correctly identifies the role of primitive assembly.
+
+9. **c) Eye (camera) coordinates.** In eye (or camera) space, the camera is at the origin, looking down the negative Z-axis by convention. 
+
+   - In model (object) coordinates, each object might have its own local frame.
+   - In world coordinates, the camera could be anywhere (not necessarily at origin).
+   - Window (screen) coordinates are 2D pixel coordinates after all transformations. The convention of camera at origin facing -Z applies specifically to the coordinate system *after applying the view transformation*, i.e., eye space.
+
+10. **a) Rotation.** A pure rotation about any axis is a rigid transformation that preserves both shape and size. It does not change the object’s scale or proportions – it only changes orientation. 
+
+    - Translation (b) also preserves shape and size (it just moves the object’s position), but it wasn’t listed. Among the given options, rotation is the clear shape-and-size preserving operation.
+    - Non-uniform scaling (c) changes the object’s proportions (stretching/compressing along axes), so it definitely alters shape.
+    - Shear (d) distorts angles and shapes as well. Thus, (a) is the transformation that leaves shape and size unchanged.
+
+11. **a) Point + Point (is not defined).** In affine geometry, you can’t add two points together meaningfully. You can add vectors to points or subtract points (giving a vector), but adding two distinct point positions doesn’t yield a valid point in that space. 
+
+    - Point – Point is defined and yields a vector (the difference between the two points). 
+    - Point + Vector is defined (moving a point by a vector yields a new point).
+    - Vector + Vector is of course defined (resulting in another vector).
+
+12. **c) Fragment Shader.** Each fragment (potential pixel) produced by rasterization is processed by the fragment shader. The fragment shader runs for every fragment generated, computing its color (and other attributes like depth). 
+
+    The vertex shader (a) runs per vertex, not per fragment. Geometry shaders and tessellation (if present) also operate on primitives or patches, not every pixel. So the fragment stage is the one that executes for each fragment.
+
+13. **b) It provides built-in vector and matrix data types.** GLSL is a C-like shading language that includes high-level types such as `vec2`, `vec3`, `vec4` (for vector math), `mat2`, `mat3`, `mat4` (matrix types), as well as many built-in functions for graphics math. It does *not* allow pointer arithmetic or direct memory addresses like C/C++ does, and it runs on the GPU, not the CPU. So (b) is the correct statement.
+
+14. **d) `color.xrg` is invalid.** In GLSL, swizzling must use components from the same naming set. Mixing **position** notation (x, y, z, w) with **color** notation (r, g, b, a) in one swizzle is not allowed. `color.xrg` tries to mix `.x` and `.rg` – `.x` belongs to the xyzw set, and `.r`/`.g` belong to the rgba set. That makes it illegal. 
+
+    Options (a), (b), and (c) are all valid swizzles:
+    - `color.xy` yields a `vec2` of the first two components (1,2 in this case).
+    - `color.xx` yields a `vec2` with the x component repeated twice (1,1).
+    - `color.zyx` yields a `vec3` with components in reversed order (3,2,1). These are allowed. Only (d) is disallowed by GLSL’s rules.
+
+15. **c) To update a portion of an existing buffer object’s data.** `glBufferSubData` lets you replace a subset of data in a buffer that’s already been allocated (with `glBufferData`). For example, you might allocate a large buffer then fill it in pieces using `glBufferSubData` at different offsets. 
+
+    - (a) describes `glBufferData` (which allocates and initializes a buffer).
+    - (b) “bind a buffer to a shader variable” is not how OpenGL works – buffer binding is to binding points (like GL_ARRAY_BUFFER), and shader variables (attributes) are linked via VAOs and vertex attrib pointers, not directly by `glBufferSubData`.
+    - (d) “subdivide a complex primitive” would refer to tessellation, not this function. So (c) is correct.
+
+16. **b) An object that stores the state of vertex attribute configurations.** A Vertex Array Object holds references to the vertex buffer objects and remembers how vertex attributes are set up (enabled/disabled, pointer formats, etc.). It’s essentially an array of state settings for vertex inputs.
+
+    - It is not literally a big array of all vertex data (that’s what VBOs are for) – so (a) is wrong.
+    - It’s not a shader program (c) – shader programs are separate objects.
+    - It’s not deprecated; VAOs are a modern core feature (d is false). So (b) is the right description.
+
+17. **b) glViewport can be called multiple times…** You can define multiple viewports in one window. For example, you could set one viewport to the left half of the window and draw a scene, then set another viewport to the right half and draw another scene. This is commonly done for split-screen or picture-in-picture rendering. So (b) is true. 
+
+    - (a) is false – you’re not limited to one viewport.
+    - (c) is false – the viewport transform is a fixed-function step that happens after NDC, not something you code in the vertex shader.
+    - (d) is false – the default is one viewport covering the whole window, but you can change its size and position with glViewport.
+
+18. **c) Clicking on a displayed object – Pick device.** A pick device returns an identifier of a selected entity. In the scenario described, using a mouse to click an icon and getting an ID back is exactly a **Pick** operation. 
+
+    - (a) Moving a mouse continuously would typically be treated as a locator device (giving a stream of positions) or a stroke device if recording the path, but “stroke” usually implies a sequence of positions making a path. This is less straightforward and not as directly one of the classic categories for a single coordinate update.
+    - (b) Keyboard pressing is a **String** device (it returns characters), not a locator.
+    - (d) Menu selection is a **Choice** device, not a string device. So (c) is the only correct pairing.
+
+19. **c) They are registered with GLUT and called automatically…** In an event-driven program, you (the programmer) register callback functions with the system (GLUT). GLUT will then invoke those functions when the appropriate event occurs (e.g., when a key is pressed or when the window needs to be redrawn). 
+
+    - (a) is wrong: you do not manually call the display or input callbacks – GLUT does that for you.
+    - (b) is wrong: callback functions are your own functions (or library-provided ones you set), not OpenGL’s built-in shape drawing.
+    - (d) is wrong: you can register multiple callbacks (one per event type, e.g., one for display, one for keyboard, etc.). Therefore, (c) is the correct description.
+
+20. **a) True.** Each GLUT window has a separate OpenGL context behind it. That means resources (textures, buffers, etc.) aren’t automatically shared between windows unless explicitly set up. The statement is true – GLUT creates a new context per window by default. Thus every window manages its own rendering state independently. (This was likely mentioned in the context of GLUT’s behavior and is generally true of OpenGL windowing toolkits.)
+
+21. **a) An `in` variable in a fragment shader receives interpolated data from the vertex shader.** In modern GLSL, vertex shader outputs (declared as `out`) get interpolated across the primitive and become `in` variables to the fragment shader. For example, if the vertex shader has `out vec3 vColor;`, the fragment shader can declare `in vec3 vColor;` to receive the smoothly interpolated color for each fragment.
+
+    - (b) is incorrect: GLSL function parameters can use `in`, `out`, or `inout` qualifiers, but “passed by value-return” isn’t the default. Typically, non-qualified parameters are in (pass-by-value). So the statement as given (“rather than by value-return”) is somewhat confusing or false – default is by value, and you can simulate pass-by-reference with out parameters.
+    - (c) is incorrect: shader programs are not stand-alone applications; they run on the GPU as part of the pipeline.
+    - (d) is incorrect: GLSL provides many built-in math functions (e.g., trig, sqrt, etc.). Thus, (a) is the only correct statement given.
+
+22. **a) True.** Once you call `glutMainLoop()`, GLUT takes over with its internal loop and will continuously process events (redraw, input, etc.) until the program exits. The function does not return back to your code. So any code after `glutMainLoop()` in `main()` will not execute. This matches typical GLUT usage (the program essentially lives inside the main loop). Therefore the statement is true.
+
+23. **c) Rasterization.** The rasterizer is the pipeline stage that determines which pixels (fragments) are covered by a primitive. It takes assembled primitives (points, lines, triangles) and fills them in, generating fragment data for the fragment shader. 
+
+    - Vertex shading happens earlier (processing each vertex).
+    - Primitive assembly groups vertices into primitives.
+    - Blending happens after fragment processing to mix colors, not to generate fragments. So (c) is correct.
+
+24. **b) Omit the current fragment (not draw it).** In a fragment shader, the `discard` keyword will **throw away** the current fragment being processed. This means that fragment doesn’t get written to the framebuffer (and doesn’t undergo depth or stencil writes). Typically this is used for implementing transparency cutouts (e.g., discard fragments of a texture that are transparent).
+
+    - (a) is wrong: Vertex processing is separate; `discard` has nothing to do with skipping vertices.
+    - (c) is wrong: `discard` doesn’t flush GPU commands; it’s purely about the current fragment.
+    - (d) is wrong: it doesn’t unbind textures. So the correct effect is dropping that fragment from being drawn.
+
+25. **a) Orthographic projection.** In an orthographic (parallel) projection, object size remains constant regardless of depth. An object will appear the same size no matter how far from the camera it is (assuming it’s within the viewing volume). In contrast, perspective projection (b) makes far objects look smaller (foreshortening). 
+
+    - Option (c) “Pinhole” is essentially perspective (so objects do change size with distance).
+    - (d) “None” is incorrect because orthographic indeed maintains size with distance. So (a) is correct.
+
+<br>
+
+## Master Quiz 2 Answer Key
+
+1. **a) True.** In standard lighting models (like Phong lighting), if you have no light sources, illuminated objects will appear black because there’s no light to reflect. The statement correctly says object appearance is affected by lights – so without lights, they’d be dark. Therefore it’s true that lights influence the appearance of objects.
+
+2. **a) True.** Rods are photoreceptors used for low-light (scotopic) vision and are not color-sensitive (they see in grayscale/night vision). Cones operate in brighter light and come in three types for color vision. The statement contrasts rods and cones correctly, so it’s true.
+
+3. **a) Red.** The additive primary colors are Red, Green, Blue (RGB). Red is one of them. Yellow, Cyan, and Magenta are *subtractive* primaries (used in mixing pigments/inks). Thus the only additive primary listed is Red.
+
+4. **b)** – **Modern OpenGL requires VAOs/VBOs.** In modern OpenGL, you *must* use buffer objects to send vertex data and you must set up at least one VAO to store vertex attribute configurations. Shaders are also required. 
+
+   - (a) is false because in core profile you cannot use the fixed-function pipeline (no glBegin/glEnd — you need shaders).
+   - (c) is false (immediate mode is deprecated and inefficient; you cannot use glBegin/glEnd in core profile at all).
+   - (d) is false: legacy OpenGL had built-in matrices, but modern OpenGL requires you to handle matrices (via your own uniforms/shaders). So (b) is the correct true statement.
+
+5. **c) GLUT is part of the core OpenGL spec – is false.** GLUT is a utility library, not part of OpenGL itself. All other statements about GLUT are true: it’s cross-platform for opening windows (a), it handles input via callbacks (b), and it’s indeed a simple toolkit (d). That makes (c) the false one.
+
+6. **c) GL_LINE_STRIP.** A line strip connects a series of points with continuous segments. If you have points p0, p1, p2, ... and use GL_LINE_STRIP, you get a line from p0 to p1, then p1 to p2, etc. 
+
+   - GL_LINE_LOOP is similar but also connects the last point back to the first (closing the loop).
+   - GL_TRIANGLE_FAN is for triangles, not lines.
+   - GL_LINES would treat each pair of points as an independent segment, not a continuous chain. So (c) is correct.
+
+7. **a) Tessellate into triangles.** OpenGL’s pipeline fundamentally handles triangles (and other simple primitives). To render a concave polygon, the application should break it into a set of triangles (triangulate it). Modern OpenGL doesn’t have a direct concave polygon primitive. Option (a) describes the needed step.
+
+   - There is no `GL_CONCAVE_POLYGON` mode (b is bogus).
+   - (c) Using GL_POLYGON with a concave shape would not render correctly (if at all) in modern OpenGL; older OpenGL had GL_POLYGON but it required convex polygons.
+   - (d) OpenGL will not automatically tessellate general concave polygons for you (unless you use the tessellation stage in OpenGL 4.x with patches, or the GLU tessellator utility). So (a) is the right answer.
+
+8. **b) They are clipped.** When a primitive is partially outside the view frustum, OpenGL will clip it – meaning the portions outside are discarded and new vertices might be generated at the clip boundary, keeping only the inside part to continue through the pipeline. It doesn’t simply drop the entire primitive unless it’s completely outside. 
+
+   - (a) is wrong (it’s not fully discarded if only partially out).
+   - (c) is not accurate; while it’s true the parts outside won’t show up, what actually happens internally is clipping, not just “draw but not visible.” 
+   - (d) has no basis – there’s no concept of lower resolution outside the frustum; the object is either inside or clipped. Thus, (b) is correct.
+
+9. **b) -1 to 1.** Normalized Device Coordinates (NDC) range from –1 to +1 along each axis (X, Y, Z) for points that are within the view. After the perspective divide, any vertex with x, y, or z outside the [-1,1] range is outside the canonical view volume (and will be clipped or discarded). Therefore, (b) is correct.
+
+   *(Note: some graphics APIs use 0 to 1 for Z in NDC, but OpenGL’s convention is typically -1 to 1 for X, Y, Z after projection and divide.)*
+
+10. **d) Non-uniform scaling.** A non-uniform scale (different scale factors for different axes) will distort the object’s shape (e.g., making a circle into an ellipse, or a cube into a rectangular box). It is not a rigid transform because it doesn’t preserve angles or relative proportions. 
+
+    - Rotation (a) and translation (b) are rigid (they preserve shape and size).
+    - Uniform scaling (c) preserves shape (angles remain the same, all dimensions scaled equally) though it changes size; however, uniform scaling is not considered a “rigid transformation” in the strict sense (rigid means preserve distances exactly), but the question asks which is not rigid – non-uniform scaling clearly is not. Therefore, (d) is the best answer since it definitely fails to preserve shape.
+
+11. **a) One origin and three perpendicular basis vectors.** A coordinate frame in 3D is defined by a reference origin and a set of three basis vectors (axes) that are typically orthogonal (perpendicular) and normalized. This gives orientation and scale for the frame. 
+
+    - (b) One origin + one axis is not enough (that would define only one dimension).
+    - (c) Three non-collinear points could define a plane or a basis in a loose sense, but without a clear origin and orthonormal directions, it’s not a full coordinate frame specification (you could derive a frame from three non-collinear points, but answer (a) is the precise definition).
+    - (d) “a reference grid” is vague and not a formal requirement. So (a) is correct.
+
+12. **b) A 4×4 matrix with (tx, ty, tz) in the last column.** In homogeneous coordinates (column-vector convention), an affine transformation matrix that includes translation looks like:
+
+    \[
+    \begin{pmatrix}
+    1 & 0 & 0 & t_x \\
+    0 & 1 & 0 & t_y \\
+    0 & 0 & 1 & t_z \\
+    0 & 0 & 0 & 1
+    \end{pmatrix}
+    \]
+
+    The translation components (t_x, t_y, t_z) appear in the matrix’s last column (except the bottom element which remains 1). 
+
+    - (a) is not how it’s done.
+    - (c) is mixing up row vs column vector conventions (with column vectors, last *column* encodes translation, not the bottom row).
+    - (d) is false because you can represent translation with homogeneous matrices. So (b) is the correct representation.
+
+13. **a) True.** A `uniform` in GLSL is set by the application via API calls (e.g., glUniform*) and it remains constant across all vertices/fragments for a given draw call (or until changed). It cannot be modified within the shader during execution. The statement accurately describes a uniform variable’s role.
+
+14. **d) gl_VertexPointer.** There is no built-in shader variable called `gl_VertexPointer`. The other three are valid built-ins (in older GLSL or the compatibility profile):
+    - `gl_Position` is the built-in output of the vertex shader for position.
+    - `gl_FragCoord` is a fragment shader input giving the screen coordinates of the fragment.
+    - `gl_FragColor` is a legacy fragment shader output for color (in modern GLSL, you use a user-defined out, but `gl_FragColor` still exists in compatibility). 
+
+    `glVertexPointer` (without underscore) is actually an OpenGL fixed-function call, not a shader variable. So (d) is the correct answer.
+
+15. **a) The final color (and optionally depth) for the fragment.** The primary purpose of a fragment shader is to compute the color (and possibly transparency, etc.) of each fragment. The fragment shader can also output a depth value (via `gl_FragDepth` or by default passing through interpolated depth), but its main output is the fragment’s color, which will be written to the framebuffer. 
+
+    It does not output a new vertex position (b) – that’s vertex shader’s job. It cannot generate new vertices (c). So (a) is correct.
+
+16. **c) Discard an entire primitive.** A vertex shader operates on one vertex at a time and cannot discard or remove vertices/primitives. It has no mechanism like the fragment shader’s `discard`. Only a geometry shader (if in use) could remove or add primitives. Vertex shaders can:
+    - Transform vertex coordinates (a),
+    - Output varyings like colors (b),
+    - Access uniform data (d).
+   But they cannot decide to “drop” a primitive entirely. So (c) is the thing it *cannot* do.
+
+17. **b) False.** `glGenBuffers` just generates an identifier for a buffer object. It does **not** allocate GPU memory by itself## Master Quiz 2 Answer Key (continued)
+
+17. **b) False.** `glGenBuffers` only reserves an identifier (name) for a buffer; it does not allocate GPU memory until you call `glBufferData` (or otherwise initialize it). So the statement is false. The usual pattern is: generate a buffer ID, bind it, then allocate with `glBufferData`.
+
+18. **a) Vertex attribute data.** A VBO (Vertex Buffer Object) is used to store vertex data like positions, normals, texture coordinates, colors, indices for element arrays, etc., on the GPU. (b) Shaders are stored in program objects, not VBOs. (c) CPU arrays are just regular memory, not a VBO (the whole point of a VBO is to put it on GPU memory for fast access by the GPU). (d) Display lists are an older OpenGL feature, separate from VBOs. So (a) is correct.
+
+19. **a) String device.** A keyboard returns characters (or strings of characters when typing), so logically it’s a **String** input device. It’s not a locator (which would give coordinates, like a mouse), not a pick (which returns an ID of an object), and not a valuator (continuous analog values). Therefore, (a) is the best fit.
+
+20. **a) glutDisplayFunc(myDisplayFunc).** The display callback is set with `glutDisplayFunc()` to tell GLUT which function to call whenever the window needs to be redrawn. 
+
+    - `glutIdleFunc` is for when nothing else is happening (idle events).
+    - `glutReshapeFunc` handles window resize events.
+    - `glutMotionFunc` handles mouse motion events (with a button pressed). So (a) is correct.
+
+21. **a) True.** The idle callback is called repeatedly when no other events are pending, which makes it great for continuously updating animations or backgrounds. If you want an animation to progress, you often register an idle function that updates some state (e.g., rotation angle) and then calls `glutPostRedisplay()`. So yes, it can be used for continuous updates.
+
+22. **a) True.** In double buffering, you draw to the back buffer then swap it to the front for display. GLUT’s `glutSwapBuffers()` is usually called at the end of the display function to show what you’ve rendered. If you don’t swap in a double-buffered context, you’d never see the new frame. So the statement is true.
+
+23. **a) True.** A rotation about Z (assuming a 3D coordinate system where Z is coming out of the screen) will indeed rotate the point in the XY-plane, but leave its Z coordinate unchanged (because you’re spinning around the Z-axis). So any point (x, y, z) under a Z-rotation becomes (x*cosθ – y*sinθ, x*sinθ + y*cosθ, z). The z stays the same. So it’s true.
+
+24. **a) True.** Depth testing uses the depth buffer to ensure proper occlusion; if not enabled, OpenGL will just draw objects in the order given, potentially showing far objects over near ones if drawn later. With depth testing, fragments that are behind something already drawn (closer) will be discarded, resulting in correct visibility. Therefore, enabling GL_DEPTH_TEST is indeed needed for proper 3D visibility.
+
+25. **a) True.** `glClearColor(r,g,b,a)` sets the color that will be used whenever you clear the color buffer (with `glClear(GL_COLOR_BUFFER_BIT)`). So if you call `glClearColor(0,0,0,1)` and then clear, you get a black background. The statement describes that usage correctly, so it’s true. (Note: `glColor3f` sets the current drawing color, not the clear color; `glClearColor` is the one for background clearing.)
+
+<br>
+
+## Master Quiz 3 Answer Key
+
+1. **a) True.** If you have a lighting shader that depends on light sources (like typical Phong shading), and you define no lights, then the calculated illumination will be zero. Thus, the objects would indeed appear black (assuming no ambient light). The statement is true given the context of “typical lighting shader.”
+
+2. **a) True.** Printers use CMY (plus K for black in CMYK) inks which subtract light. The statement accurately describes that printing uses a subtractive color model (cyan, magenta, yellow). So it’s true.
+
+3. **a) True.** Humans have three types of cones (L, M, S – often called roughly Red, Green, Blue sensitive cones). They correspond to peaks in long, medium, and short wavelength ranges. The statement in (a) is correct. 
+
+    - (b) is wrong because rods don’t perceive color, and they work in low light.
+    - (c) is wrong: we only need three primaries to mix perceived colors due to our 3 cone types (metamerism).
+    - (d) is wrong: we have three, not four, types of color receptors (unless one is color blind or a rare tetrachromat, but that’s beyond scope).
+
+4. **a) True.** OpenGL’s camera (synthetic pinhole) indeed places the projection plane in front of the center of projection so that the image isn’t inverted. This results in an upright image (non-inverted) as opposed to a real pinhole camera where the image plane is behind the pinhole and the image is upside down. So the statement is true.
+
+5. **a) True.** OpenGL *is* a state machine. When you call `glEnable(GL_DEPTH_TEST)`, you’ve set a state that stays until you disable it. Likewise, setting a color or binding a texture stays active for subsequent draw calls until changed. This persistent state nature is why we call it a state machine API. Thus, the statement is true.
+
+6. **c) OpenGL automatically handles physics...** is false. OpenGL is just a graphics API; it doesn’t know anything about physics, collisions, or game logic. Options (a), (b), and (d) are true:
+   - Commands are executed on the GPU via drivers (a).
+   - It can be used for 2D or 3D (b).
+   - It’s cross-platform (d). 
+   So (c) is the false statement, making it the answer.
+
+7. **a) True.** GLUT indeed is used for managing the window and inputs in a cross-platform way for OpenGL programs. It’s basically a utility for that purpose. So the statement is true.
+
+8. **b) GL_LINE_STRIP.** A line strip draws a continuous line through all the provided points (connecting each to the next). This is exactly “connected series of line segments.” (a) GL_LINE_LOOP would also connect the last back to the first (making a closed loop, which the question didn’t specify). (c) is triangles, (d) pairs separate segments. So (b) is correct.
+
+9. **a) True.** Any set of three non-collinear points forms a triangle, and triangles are always planar, simple (no self-intersection), and convex (any line between two points stays inside). So the statement is true.
+
+10. **a) True.** In modern core OpenGL, you don’t have a direct way to send a polygon with >3 vertices unless it’s already convex (and even then the pipeline still breaks it down). The general approach is to break everything into triangles. Even GL_POLYGON in older OpenGL required convexity and was internally tessellated into triangles (or fans). So yes, essentially everything is triangles and the statement is true.
+
+11. **b) Vertex Processing stage (Vertex Shader).** The model and view transformations (often combined into a model-view matrix) are applied to each vertex, typically in the vertex shader stage. The application can pass the model-view matrix as a uniform and the shader multiplies it by the vertex position. 
+
+    - The application could transform vertices on CPU (a), but in modern OpenGL we generally do it on the GPU in the vertex shader.
+    - The rasterizer (c) deals with fragments, not with object space to camera space transforms.
+    - The fragment stage (d) deals with pixels, not moving vertices. So (b) is correct.
+
+12. **a) True.** The view transform is indeed the inverse of the camera’s transform. If the camera moves +5 in X, the view matrix will move everything -5 in X to compensate, effectively placing the camera at origin. This brings world coordinates into the coordinate system where the camera is at origin facing -Z. So the statement is true.
+
+13. **c) NDC space.** After projection and dividing by w, vertices are in Normalized Device Coordinates (NDC). These are the coordinates in the range [-1,1] (assuming perspective projection) that the GPU then maps to screen via the viewport transform. So (c) is correct.
+
+14. **d) Non-uniform scaling.** A non-uniform scale is affine (it can be represented by a matrix with homogeneous coordinates), but it is not rigid. It will alter angles and relative lengths (except along principal axes). It’s still affine though (preserves lines, parallelism, and ratios of lengths on parallel lines).
+
+    - Rotations and translations (a, b) are rigid (preserve distances).
+    - Uniform scaling (c) is not rigid either (changes distances by a constant factor), but uniform scaling preserves shape (just not distances). However, uniform scaling could be considered similarity transform, not rigid, but the question specifically says affine but not rigid – both uniform and non-uniform scaling fit that description. However, non-uniform scaling is a clearer example of changing shape.
+    Given the options, (d) is definitely affine (matrix form exists) and not rigid. (c) might be a bit borderline since some might consider scaling not rigid; but uniform scaling does preserve angles, just not absolute distances. The safest answer is (d).
+
+15. **a) True.** Yes, representing a vector as (x, y, z, 0) in homogeneous coordinates indicates it’s a direction. The w=0 means no translation component, so this is treated as a direction with infinite distance (point at infinity concept). Thus adding a vector to a point (x,y,z,1) + (dx,dy,dz,0) yields (x+dx, y+dy, z+dz, 1), translating the point. So the statement is true (this is a standard trick in projective geometry).
+
+16. **b) mat3.** GLSL supports `mat2`, `mat3`, `mat4` for 2x2, 3x3, 4x4 matrices. It also supports vector types like `vec2`, `vec3`, `vec4` and their integer (`ivec`) and boolean (`bvec`) counterparts, but:
+    - There is no `vec5`; max is vec4.
+    - There is no `int3` type; you’d use ivec3 instead.
+    - There is no `bool4` type; you’d use bvec4.
+    So the only valid one listed is `mat3`.
+
+17. **b) Fragment shader runs after rasterization.** The order is: Vertex Shader (per vertex) → optional Geometry/Tessellation → Primitive Assembly & Rasterization → Fragment Shader (per fragment). So the fragment shader indeed runs after rasterization, processing each fragment and determining its color. 
+
+    - (a) is wrong (fragment shader executes per fragment, not per triangle; a triangle can produce many fragments).
+    - (c) is wrong (vertex shader can’t see fragment shader outputs; the pipeline flows forward, not backward).
+    - (d) is wrong (vertex shader can’t emit new primitives on its own; that’s the job of the optional geometry shader). So (b) is correct.
+
+18. **a) True.** GLSL deliberately disallows pointer manipulation for safety and parallelism. It doesn’t expose raw memory addresses – you work with high-level types and arrays. So it’s true that pointer arithmetic is not supported in GLSL.
+
+19. **a) Compute and set gl_Position.** The vertex shader’s essential job is to output the clip-space position for each vertex by writing to the special variable `gl_Position`. If a vertex shader doesn’t set gl_Position, the results are undefined (in fact, nothing useful will be drawn). 
+
+    - (b) gl_FragColor is a fragment shader output, irrelevant in vertex shader.
+    - (c) Sampling textures in a vertex shader is possible but not common and not needed to place a vertex.
+    - (d) gl_PointSize is only needed if drawing points and you want a custom size; it’s not required in general and doesn’t place the vertex spatially. So (a) is the fundamental requirement.
+
+20. **a) True.** Using VAOs: you create a VAO and bind it, then set up all `glVertexAttribPointer` and `glEnableVertexAttribArray` calls (which get recorded in the VAO state). Then when drawing, you bind the VAO and issue draw calls. If you don’t bind the VAO, those configurations might not be active. So always bind the VAO first when setting up or drawing. The statement is true.
+
+21. **a) Choice device.** Selecting from a menu is a **choice** device – it presents a set of options and returns the selection (often as an ID or index). 
+    - A pick device typically involves picking an object out of a rendered scene by clicking, rather than selecting from a menu of choices. 
+    - A locator gives a coordinate.
+    - A string device gives text. 
+    So (a) is the best description for menu selection.
+
+22. **a) True.** A locator, like a mouse locator, returns an (x, y) position on the screen (or (x, y, z) in 3D with special devices). It’s basically the classic “pointing” input. So yes, that’s true.
+
+23. **a) The window is resized.** `glutReshapeFunc` sets a callback that gets invoked when the window changes size. The arguments to that callback are the new width and height, allowing you to adjust the viewport or projection accordingly. So (a) is correct.
+
+24. **a) True.** If you never set a display callback in GLUT, the program won’t know what to draw or refresh when needed. GLUT would typically display a blank window or whatever default (often black) since there’s no user-defined rendering. So it’s true – you need a display callback to see something.
+
+25. **a) True.** A stroke device returns a sequence of coordinates, basically drawing a path or a stroke (like freehand drawing input). This is indeed the definition of a stroke logical device. So that statement is true.
+
+<br>
+
+## Master Quiz 4 Answer Key
+
+1. **a)** **Model → View → Projection → Divide → Viewport.** That’s the correct order:
+   - First, model transformations (to world).
+   - Then view (camera) transformation (to eye coordinates).
+   - Then projection (to clip coordinates).
+   - Then perspective divide (to NDC).
+   - Then viewport mapping (to screen pixels).
+   
+   The other sequences are out of order. So (a) is right.
+
+2. **a) True.** The final color of a rendered object usually comes from the lighting equation which considers light sources, material properties (like diffuse, specular reflectivity), and the viewer’s position (for specular highlights, etc.). Without those factors, everything would look flat or not lit properly. So it’s true.
+
+3. **a) True.** Perspective projection has foreshortening: far objects appear smaller. That’s one of its defining features (which gives a sense of depth). Orthographic, by contrast, would not have that effect. The statement is true.
+
+4. **a) Automatic reflections/refractions (ray tracing feature).** Ray tracing simulation includes rays bouncing off surfaces (reflections) or bending through transparent materials (refractions), which rasterization (OpenGL’s default pipeline) does not inherently do. 
+   - Depth buffer (b) is used in OpenGL rasterization for visibility (not unique to ray tracing, so not (b)).
+   - Matrix transforms (c) are common to both.
+   - Shading models like Gouraud/Phong (d) are used in rasterization. So (a) is clearly a ray tracing hallmark, not present by default in OpenGL’s typical pipeline.
+
+5. **a) True.** This reiterates the earlier camera model concept. Real pinhole: image flips upside down on the film. Synthetic camera (OpenGL): we place a “projection plane” in front so the image doesn’t invert. So yes, true.
+
+6. **d) glRenderObject() – not a real function.** The others are all real (though note glBegin is deprecated in modern OpenGL, it’s still a function in older versions). glRenderObject() is made up for this question. So (d) is not an actual OpenGL call.
+
+7. **a) True.** Core OpenGL doesn’t handle OS-specific tasks; you need a toolkit like GLUT or similar to create a window and capture keyboard/mouse events. So indeed, true.
+
+8. **a) Hidden-surface removal via depth.** The depth buffer stores depth values for fragments and allows the system to keep track of the nearest surface at each pixel, discarding fragments that are behind something already stored (thus “hidden surface removal”). This is the main purpose of a z-buffer. It’s not for color (b), not inherently for blending (that’s a separate stage, though depth can affect blending indirectly), and not for texturing (d). So (a) is correct.
+
+9. **a) True.** Model transforms indeed take local coordinates to the shared world coords. If you have multiple objects, you apply each object’s model matrix to bring them into the world coordinate system together. So true.
+
+10. **a) Rotation about the object’s center.** A rotation around its own center does not distort or scale the object – it just changes its orientation. So shape and size remain same. 
+
+    - Non-uniform scaling (b) changes shape.
+    - Uniform scaling (c) changes size (though keeps shape, but not the original size).
+    - Shear (d) definitely distorts shape. 
+    So (a) is the one that leaves shape and size unchanged.
+
+11. **a) True.** Rotations, translations, and scalings (if scale is not zero) are all affine transforms. They can be combined, and the result is an affine transform (represented by a 4x4 matrix). As long as no scale is zero (which would collapse dimension), the transform is invertible. So yes, it’s true.
+
+12. **a) Buffer objects with vertex attrib pointers.** Modern OpenGL uses VBOs to store vertex data. The application sets up these buffers and then uses `glVertexAttribPointer` calls (and glEnableVertexAttribArray) to tell OpenGL how to feed that data into the vertex shader’s input variables. So (a) describes that.
+
+    - (b) doesn’t exist; GPU doesn’t have built-in shapes in typical usage.
+    - (c) fragment shader doesn’t feed vertex shader; flow is opposite.
+    - (d) OpenGL doesn’t auto-provide complex models for you. So (a) is correct.
+
+13. **a) True.** Yes, vertex shader outputs (like varying color, texture coords) get interpolated across the primitive’s surface during rasterization. Each fragment shader invocation then gets an interpolated value. That’s exactly how smooth shading works. So it’s true.
+
+14. **b) Recursive function calls.** GLSL does not support recursion. Each shader invocation must be finite and cannot call itself or other functions cyclically. Loops are allowed (with some limits, they must be able to unroll or otherwise have a known maximum). Vector ops and built-in functions are allowed. So recursion (b) is the forbidden one.
+
+15. **a) True.** `gl_FragCoord` gives the window coordinates (x, y) of the fragment and also the depth in gl_FragCoord.z. w is 1/clip.w basically. So yes, it contains screen position and depth. That is true.
+
+16. **a) True.** glBufferSubData allows partial updates to an existing buffer’s data store. This is exactly what the statement says, so true.
+
+17. **a) glVertexAttribPointer.** This function defines the format of vertex data (like saying attribute index 0 is 3 floats per vertex, type float, stride X, offset Y in the currently bound VBO). It essentially tells OpenGL how to interpret memory in the bound VBO as vertex attributes, linking it to a specific attribute index (which is usually tied to a shader input). 
+
+    - glBindVertexArray binds a VAO.
+    - glEnableVertexAttribArray enables a given attribute index.
+    - glBufferData allocates/initializes buffer memory. 
+    Only glVertexAttribPointer explicitly sets the layout of vertex data in the buffer relative to the shader inputs.
+
+18. **a) True.** `glutTimerFunc(msec, func, value)` triggers `func(value)` once after the given time in milliseconds. It’s often used for triggering animation steps or events on a timed basis. After calling, if you want continuous periodic calls, you usually re-register it within the callback. So yes, it schedules a one-time future call. True.
+
+19. **a) glutMouseFunc.** This sets a callback for mouse button events (presses and releases). The callback you pass to glutMouseFunc will be called with parameters like button, state (down/up), and mouse (x,y). 
+
+    - MotionFunc is for movement *while* a button is pressed.
+    - PassiveMotionFunc is for movement with no buttons pressed.
+    - KeyboardFunc is keys, not mouse. So (a) is right.
+
+20. **a) True.** The keyboard callback (for standard keys) has signature like `void func(unsigned char key, int x, int y)`. The x, y are the mouse coordinates at the time of the key event. GLUT provides that so you know where the mouse was when a key was pressed. So yes, that’s true.
+
+21. **a) True.** Exactly: `glutMotionFunc` handles dragged mouse movement (mouse move with a button held), and `glutPassiveMotionFunc` handles movement with no buttons. The statement is correct.
+
+22. **a) True.** `glutPostRedisplay()` marks the current window as needing to redraw. GLUT will then call your display callback at the next opportunity (often next loop iteration). This is how you manually trigger redraws (especially in an idle or input callback). So it’s true.
+
+23. **a) GL_POINTS.** GL_POINTS is valid. GL_CUBE and GL_SPHERE are not actual primitive enums (they don’t exist, those would be made of triangles or something via user code). GL_POLYGON exists in older OpenGL (compatibility mode) to draw a single polygon, but GL_SQUARES is not a thing. The question asks which is valid: GL_POINTS definitely is. If it’s asking which is a valid mode, the answer is GL_POINTS (assuming only one answer is intended). If multiple choice: possibly GL_POINTS, GL_TRIANGLES, and GL_POLYGON (though GL_POLYGON is only in compatibility). The phrasing “Which of the following is a valid mode” suggests one answer, which would be (a) in this list. So (a) GL_POINTS is the correct valid primitive.
+
+<br>
+
+## Master Quiz 5 Answer Key
+
+1. **b) False.** Object appearance *is* affected by light sources. If there were truly no light effect, every object would look flat (or have some default coloring but no shading). The statement says “not affected by light,” which is incorrect. In realistic rendering, lights are crucial. So the answer is false.
+
+2. **a) True.** OpenGL’s model encourages separating object geometry, light definitions, and camera parameters. You specify them independently and then OpenGL (with your shaders or fixed pipeline) computes the resulting image from their interaction. So yes, that’s one of the strengths: independence of these components.
+
+3. **a) True.** Ray tracing is computationally heavy since it traces many rays per pixel for effects like reflections, shadows, refraction. OpenGL’s typical pipeline (rasterization) is much faster but less physically accurate. So indeed, ray tracing is more realistic but slower, making the statement true.
+
+4. **a) True.** OpenGL itself is just a standard (by Khronos Group), and your video card’s driver implements that standard. When you call an OpenGL function, it goes into the driver which then issues commands to the GPU. So it’s true.
+
+5. **a) On the GPU via the driver.** `glDrawArrays` (or similar) will have the GPU process your vertex data, run shaders, etc. The heavy lifting is on the GPU. The driver orchestrates this but it’s not CPU doing the rendering calculations. So (a) is correct. (b) no separate CPU thread is spawned; (c) OpenGL used to have software fallback if no driver, but in normal use, it’s the GPU; (d) is nonsense.
+
+6. **a) True.** Modern OpenGL is retained mode: you put data in buffers (VBOs) and reuse them; you set state, and then draw calls use that state repeatedly. Immediate mode (glBegin/glVertex/glEnd) is deprecated because it sent vertices one by one each frame (immediate use and discard). So yes, modern GL is retained mode and needs shaders, which is quite different from old immediate mode. Thus true.
+
+7. **a) True.** GLUT handles creating windows, setting pixel formats, and capturing input events, making the code mostly platform independent. It doesn’t provide advanced GUI elements (b is false), it’s not core OpenGL (c false), and it can be used in C or C++ (d false, it’s basically a C API but callable from C++). So (a) is the correct true statement about GLUT.
+
+8. **d) Rasterization stage.** Rasterization is what breaks primitives into fragments (basically “drawing” the primitive into the pixel grid, generating fragment data). Primitive Assembly just groups vertices; fragment shading happens after fragments are generated; vertex shading is earlier. So the answer is rasterization.
+
+9. **a) True.** That’s how varying interpolation works. The rasterizer interpolates the outputs of the vertex shader to produce inputs for each fragment shader execution. So yes, true.
+
+10. **a) True.** After projection, coordinates are in clip space, where we still have a w component. We haven’t normalized by dividing by w yet. Clip coordinates typically range arbitrarily (depending on projection), but when you divide by w you get NDC in [-1,1]. So yes, clip coordinates are before perspective divide. The statement is true.
+
+11. **a) It preserves straight lines.** Affine transformations preserve collinearity and ratios of distances along lines. They do *not* necessarily preserve angles (b is false; that’s only rigid or similarity transforms) or lengths (affine can scale differently, so not c). (c) is false because translations are a key part of affine transforms; indeed affine = linear transform + translation. (d) is false because affine is a kind of linear mapping in homogeneous coords (so not “non-linear” in that sense). So (a) is the property of affine: lines map to lines.
+
+12. **a) True.** Transformations do not generally commute; doing one then another often yields a different result than the reverse. A classic example: rotate then translate vs translate then rotate yields different positions. So order matters and the statement is true.
+
+13. **a) GLSL.** Shaders in OpenGL are most commonly written in GLSL (OpenGL Shading Language). It’s a C-like language specific for OpenGL. C++ is used for your application but not directly as shader code. Assembly was used eons ago or as a target, but not by most developers. HLSL is DirectX’s shading language, not OpenGL’s. So (a) is correct.
+
+14. **a) True.** The vertex shader must output `gl_Position`. If it doesn’t, the clipping and rasterization have no position for the vertex. OpenGL will typically treat missing gl_Position as an error or undefined. So yes, you must set it. Therefore true.
+
+15. **d) static.** In GLSL, the storage qualifiers are things like `attribute` (old), `varying` (old), or the modern `in`, `out`, `uniform`. The word `static` doesn’t have the same meaning as in C++ for GLSL variables. You cannot declare a global “static” variable in GLSL that persists across shader invocations (each invocation is isolated). So (d) is not a GLSL storage qualifier. (It might compile in some contexts for local function scope to indicate compile-time const, but generally, static isn’t a common GLSL keyword in the same way.)
+
+16. **a) Use out in vertex and in in fragment.** The way to pass data is via an output from the vertex shader that matches an input in the fragment shader. For example: in the VS `out vec3 myColor;` and in the FS `in vec3 myColor;`. Uniform wouldn’t work because uniform is constant for all fragments of a draw, not per vertex. Globals aren’t automatically shared (there’s no shared memory between shaders except what you pass via interfaces). So (a) is correct.
+
+17. **a) True.** VAO captures the state of vertex buffer bindings and attribute pointers. When you bind that VAO later, all that configuration is restored so you can just call glDrawArrays without re-specifying all pointers. So yes, true.
+
+18. **a) Unbinds the current array buffer.** In OpenGL, binding to 0 typically unbinds. For VBOs, glBindBuffer(target, 0) means “no buffer bound” for that target. This is often done to avoid accidental modifications or just to reset state. It doesn’t bind a default (there is none beyond 0 meaning “none”), doesn’t reset data (you’d use glDeleteBuffers to delete, or glBufferData to reallocate, not glBindBuffer to 0), and binding 0 is valid and not an error – it’s the standard way to unbind. So (a) is correct.
+
+19. **a) glutSpecialFunc.** GLUT has `glutKeyboardFunc` for ASCII keys and `glutSpecialFunc` for special keys (arrows, F1-F12, etc.). So to handle arrow keys, you use glutSpecialFunc. (There is no glutArrowFunc; you catch arrow in the special callback with a special key code.) So (a) is right.
+
+20. **a) True.** When you call glutMainLoop, it doesn’t return. It starts the event loop and keeps running until you close the window or exit the app. So code after it won’t run. True.
+
+21. **a) True.** If no display callback is registered, GLUT has nothing to call to actually render content. So the window would be blank or whatever default was last drawn (if anything). Typically, you must have a display callback. So true.
+
+22. **a) True.** Yes, calling glutPostRedisplay flags the window to be redrawn. On the next loop iteration or as soon as possible, GLUT will call your display function. It’s how you animate or update drawings in response to input or time. So true.
+
+23. **d) GL_SQUARES is not a thing.** The others:
+    - GL_POINTS – valid.
+    - GL_TRIANGLES – valid.
+    - GL_POLYGON – exists in older OpenGL (for a single polygon primitive, often convex only).
+    But GL_SQUARES isn’t an OpenGL primitive mode. So (d) is the one that’s not real.
+
+24. **a) True.** Enabling depth test makes OpenGL use the depth buffer to reject fragments that are farther away than what’s already drawn at that pixel. This is exactly to ensure proper occlusion (close objects cover far ones). So the statement is true.
+
+25. **a) glClearColor.** glClearColor sets the clear color. glColor3f sets current drawing color (not specifically background). glBackgroundColor doesn’t exist. glClear with GL_COLOR_BUFFER_BIT doesn’t take color parameters (it just uses whatever glClearColor was set). So (a) is correct: glClearColor(r,g,b,a) is used to set the clear (background) color, which you then apply with glClear.

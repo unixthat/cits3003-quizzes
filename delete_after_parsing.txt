@@ -1,0 +1,347 @@
+
+
+# Comprehensive Quizzes for Weeks 1–6
+
+## Week 1 Quiz (Introduction & Image Formation, Programming with OpenGL)
+1. **True/False:** Computer graphics deals solely with generating images and is not concerned with how light or physics affect the appearance of objects.  
+2. **True/False:** An ideal pinhole camera exhibits an infinite depth of field, but in practice it requires very long exposure times to capture enough light.  
+3. **Multiple Choice:** In the context of color models, which statement is **correct**?  
+   - a) Additive color mixing (RGB) is used by emissive displays and lighting (e.g., monitors, projectors).  
+   - b) Subtractive color mixing (CMY/CMYK) is used in devices like computer monitors.  
+   - c) Additive color mixing is primarily used in print media (ink on paper).  
+   - d) Subtractive color mixing is suitable for combining colored lights on a screen.  
+4. **Multiple Choice:** The OpenGL **synthetic camera model** differs from a real pinhole camera. Which of the following is true about the synthetic camera used in OpenGL?  
+   - a) It places the image plane **behind** the center of projection, causing rendered images to appear upside down by default.  
+   - b) It places the image plane **in front of** the center of projection so that the rendered image appears upright (not inverted).  
+   - c) It cannot simulate perspective projection since it is not a physical camera.  
+   - d) It does not allow separate control of objects, viewer, and light sources.  
+5. **Multiple Choice:** Which of the following is **not** an advantage of the synthetic camera model in graphics APIs like OpenGL?  
+   - a) Objects, camera (viewer), and light sources can be defined independently and combined to produce the final image.  
+   - b) It leads to a simple software API and fast hardware implementations for rendering.  
+   - c) Two-dimensional graphics cannot be handled by the synthetic camera model (it only works for 3D).  
+   - d) The same model can be used for both real-time rendering (OpenGL) and offline rendering (with appropriate algorithms).  
+6. **Multiple Choice:** Which statement about **OpenGL** is correct?  
+   - a) OpenGL is an open-source software library you install separately; it is not tied to your graphics hardware or driver.  
+   - b) OpenGL is a cross-platform graphics API specification, and its implementation is typically provided by graphics card drivers ([002-Programming with OpenGL.pdf](file://file-1Ttf5i2Yj4X6kaa4bVNKZS#:~:text=%E2%80%A2%20Its%20an%20API%20,6%20was%20released%20in%202017)) ([001_Intro_Image_Formation.pdf](file://file-AuboY5p3HbttwTStaHGUjT#:~:text=OpenGL%20is%20a%20platform,level)).  
+   - c) OpenGL provides high-level GUI elements (windows, buttons) as part of its core functionality.  
+   - d) Modern OpenGL (3.2 and above) still uses the fixed-function pipeline by default for compatibility.  
+7. **Multiple Choice:** Which of the following is **not** a primitive type provided by OpenGL for drawing?  
+   - a) `GL_POINTS`  
+   - b) `GL_TRIANGLES`  
+   - c) `GL_TRIANGLE_STRIP`  
+   - d) `GL_TRIANGLE_LOOP`  
+   - e) `GL_LINE_LOOP`  
+8. **Multiple Choice:** In OpenGL, a **polygon** (filled shape) to be rendered must meet certain criteria. Which option correctly describes a **valid** polygon for rendering *without* needing further processing?  
+   - a) The polygon must be **simple** (no self-intersecting edges) and **convex** ([003-OpenGL-Pipeline.pdf](file://file-TxWXK8xrmuB2BKdF12TvRz#:~:text=%E2%80%A2%20Graphics%20systems%20like%20triangles,line%20segment%20between%20two%20points)).  
+   - b) The polygon can be concave but must lie in a single plane (flat).  
+   - c) The polygon may have crossing edges as long as it is convex.  
+   - d) Any arbitrary 2D shape is acceptable; OpenGL automatically tessellates all polygons.  
+9. **True/False:** In the OpenGL graphics pipeline, *only* the fragment shader (fragment processing stage) can determine the final color of a pixel; the vertex shader cannot influence vertex colors at all.  
+10. **Multiple Choice:** Which of the following statements about OpenGL and its related libraries is **incorrect**?  
+    - a) GLUT (OpenGL Utility Toolkit) is a library to manage window creation, input, and events, but it does not provide advanced GUI widgets like sliders or menus by itself ([002-Programming with OpenGL.pdf](file://file-1Ttf5i2Yj4X6kaa4bVNKZS#:~:text=%E2%80%A2%20GLUT%20lacks%20the%20functionality,platform%20%E2%80%A2%20No%20slide%20bars)).  
+    - b) GLEW/GLAD are libraries for loading modern OpenGL function pointers (extensions) and are often needed alongside OpenGL.  
+    - c) Every window created using GLUT has its own OpenGL rendering context (state machine) associated with it.  
+    - d) OpenGL itself includes functions for creating windows and handling user input events.  
+11. **Scenario (Short Answer):** You are using an interactive OpenGL program. Explain what a **callback function** is in this context and give an example of an event you might handle with a callback. (No code is required, just describe the concept.)  
+12. **Scenario (Short Answer):** Suppose you have an OpenGL program where nothing appears on screen, and you suspect it’s because of how OpenGL’s state machine was initialized. What are two *initialization steps* or states that must be set correctly for any basic OpenGL program to draw something on the window? (Hint: Consider things like clearing the screen or enabling features.)  
+13. **Multiple Choice:** Modern OpenGL is often described as a **state machine**. Which scenario best illustrates what that means?  
+    - a) OpenGL has a fixed set of states (like current color, current shader program, etc.) that persist between function calls until changed, and function calls affect these states ([002-Programming with OpenGL.pdf](file://file-1Ttf5i2Yj4X6kaa4bVNKZS#:~:text=%E2%80%A2%20OpenGL%20state%20machine%20consists,affect%20various%20aspects%20of%20rendering)).  
+    - b) OpenGL functions execute independently without any lasting side effects; you must specify all parameters every time.  
+    - c) OpenGL uses a finite-state automaton internally to decide which drawing command to run next.  
+    - d) The only state OpenGL preserves is the content of the frame buffer (drawn pixels).  
+14. **True/False:** In the default OpenGL coordinate system (before any transformations), the camera is located at the origin of the scene and looks down the negative Z-axis by default ([012_Computer_Viewing.pdf](file://file-KqpiaJUSZxhdeaBQiCnrcr#:~:text=%E2%80%A2%20In%20OpenGL%2C%20initially%20the,camera%20frames%20are%20the%20same)).  
+15. **Multiple Choice:** When starting to program with modern OpenGL (Core profile), which of the following is *not* typically required?  
+    - a) Writing and compiling a vertex shader and a fragment shader (at minimum) to handle rendering.  
+    - b) Sending vertex attribute data (like positions, colors) to the GPU via buffer objects.  
+    - c) Setting up a rendering window and an OpenGL context (often using a library like GLFW or GLUT).  
+    - d) Calling `glBegin()` and `glEnd()` for each triangle to draw it on screen.  
+
+## Week 2 Quiz (OpenGL Pipeline Architecture, Example Program)
+1. **Multiple Choice:** Which statement about the **OpenGL graphics pipeline** is true?  
+   - a) The **vertex processing** stage handles transforming vertices between coordinate systems (object space to camera space, etc.) and can perform per-vertex lighting or color computations ([003-OpenGL-Pipeline.pdf](file://file-TxWXK8xrmuB2BKdF12TvRz#:~:text=Vertex%20Processing)) ([003-OpenGL-Pipeline.pdf](file://file-TxWXK8xrmuB2BKdF12TvRz#:~:text=transformation%20being%20applied%20to%20the,vertices)).  
+   - b) The **primitive assembly** stage occurs *after* fragment shading, to group colored pixels into final geometric shapes.  
+   - c) The **rasterization** stage converts geometric primitives into **fragments** (potential pixels) and interpolates vertex attributes like color across the primitive ([003-OpenGL-Pipeline.pdf](file://file-TxWXK8xrmuB2BKdF12TvRz#:~:text=%E2%80%A2%20If%20an%20object%20is,buffer%20must%20be%20assigned%20colors)).  
+   - d) The **fragment processing** stage only paints each fragment; it does not involve any tests (like depth test) or discarding of fragments.  
+2. **Multiple Choice:** What happens to geometry that lies **outside the viewing volume** of the synthetic camera?  
+   - a) It is clipped or discarded before rasterization, so it won’t appear in the final image ([003-OpenGL-Pipeline.pdf](file://file-TxWXK8xrmuB2BKdF12TvRz#:~:text=Clipping%20%E2%80%A2%20Just%20as%20a,the%20whole%20world%2C%20the%20virtual)).  
+   - b) It is rasterized normally, but fragments are colored black.  
+   - c) The vertex processor automatically moves it into the view frustum (view volume).  
+   - d) OpenGL will throw an error if a primitive extends outside the view volume.  
+3. **Multiple Choice:** OpenGL emphasizes triangles as the fundamental polygon for rendering. **Why are triangles used as the basic primitive for complex surfaces?**  
+   - a) Triangles are always planar (flat) and cannot be self-intersecting or concave, simplifying rendering ([003-OpenGL-Pipeline.pdf](file://file-TxWXK8xrmuB2BKdF12TvRz#:~:text=%E2%80%A2%20Graphics%20systems%20like%20triangles,line%20segment%20between%20two%20points)).  
+   - b) Rendering hardware only supports triangles and cannot draw lines or points.  
+   - c) Triangles can approximate any surface when used in large numbers, and GPUs are optimized for triangle processing ([003-OpenGL-Pipeline.pdf](file://file-TxWXK8xrmuB2BKdF12TvRz#:~:text=Polygons%20in%20OpenGL%20Everything%20you,of%20points%2C%20lines%2C%20and%20triangles)) ([003-OpenGL-Pipeline.pdf](file://file-TxWXK8xrmuB2BKdF12TvRz#:~:text=Polygons%20in%20OpenGL)).  
+   - d) Using triangles ensures that no clipping is ever needed during rendering.  
+4. **True/False:** If you want to draw a quadrilateral (four-sided polygon) in modern OpenGL, you must break it into two triangles first (or use an OpenGL function that does so), because OpenGL’s core profile does not directly support drawing general quads.  
+5. **Multiple Choice:** Consider the classic stages of the pipeline. Which **pair of pipeline stages** can **both** be programmed by the developer (via shaders) in modern OpenGL’s programmable pipeline?  
+   - a) Primitive Assembly and Clipping stages.  
+   - b) Vertex Processing and Fragment Processing stages.  
+   - c) Rasterization and Framebuffer Output stages.  
+   - d) The application stage and the depth-testing stage.  
+6. **Multiple Choice:** Regarding **coordinate systems** in OpenGL, which is correct?  
+   - a) After the vertex shader runs, each vertex is typically in **clip coordinates**, which are then divided by \(w\) to yield **normalized device coordinates (NDC)**.  
+   - b) Object (model) coordinates and world coordinates are the same thing in all cases.  
+   - c) The camera (eye) coordinate system places the camera at \((1,1,1)\) looking toward the origin by default.  
+   - d) Screen (window) coordinates range from \(-1\) to \(+1\) in X and Y by convention.  
+7. **Multiple Choice:** Which of the following describes a difference between **immediate mode** and **retained mode** graphics in OpenGL?  
+   - a) **Immediate mode:** send each vertex with a function call (e.g., `glVertex` calls); **Retained mode:** store vertex data in buffers on the GPU and draw from those stored data ([003-OpenGL-Pipeline.pdf](file://file-TxWXK8xrmuB2BKdF12TvRz#:~:text=Immediate%20Mode%20Graphics%20%E2%80%A2%20Older,OpenGL%20adopted%20immediate%20mode%20graphics)) ([003-OpenGL-Pipeline.pdf](file://file-TxWXK8xrmuB2BKdF12TvRz#:~:text=Retained%20Mode%20Graphics%20with%20OpenGL)).  
+   - b) **Immediate mode** retains all vertices on the GPU for reuse, whereas **retained mode** sends vertices each time.  
+   - c) In modern OpenGL, you typically use immediate mode for performance, and retained mode only for compatibility.  
+   - d) There is no real difference; these are two names for the same OpenGL mechanism.  
+8. **Multiple Choice:** In a modern OpenGL **example program**, which of these steps is **not** necessary?  
+   - a) Generating one or more buffer objects (like VBOs) and uploading vertex data into them (e.g., with `glBufferData`).  
+   - b) Setting up vertex attribute pointers (via `glVertexAttribPointer`) to describe how vertex data is laid out in the buffer.  
+   - c) Explicitly calling a function to swap the front and back buffers if you are using double buffering (e.g., `glSwapBuffers` or letting GLUT handle it via `glutSwapBuffers`).  
+   - d) Directly calling a function to draw pixels on the screen for each frame (e.g., plotting each pixel in a loop), instead of using OpenGL’s draw call (like `glDrawArrays`).  
+9. **Multiple Choice:** What is the purpose of a **Vertex Buffer Object (VBO)** in OpenGL?  
+   - a) To store vertex data (positions, colors, normals, etc.) on the GPU for efficient drawing ([004-OpenGL-Example-Program.pdf](file://file-HxSLxfM75kkKgwSiTYbZaF#:~:text=Vertex%20Buffer%20Objects)).  
+   - b) To store compiled shader programs on the GPU.  
+   - c) To hold the rendered image (pixel data) before sending it to the screen.  
+   - d) To group multiple shader programs together for switching between them quickly.  
+10. **Multiple Choice:** What is a **Vertex Array Object (VAO)**?  
+    - a) An array that holds all the vertices of a single 3D model in system (CPU) memory.  
+    - b) An OpenGL object that encapsulates the state needed to supply vertex data — for example, it stores the associations between VBOs and vertex attribute pointers (effectively, a VAO is a container for one or more VBOs and their configuration) ([004-OpenGL-Example-Program.pdf](file://file-HxSLxfM75kkKgwSiTYbZaF#:~:text=Vertex%20Array%20Objects)).  
+    - c) A special type of shader program for array-based calculations.  
+    - d) A deprecated feature from legacy OpenGL replaced by VBOs.  
+11. **True/False:** Calling `glBufferSubData()` allows you to update a subset of data in an existing buffer object without reallocating the entire buffer ([004-OpenGL-Example-Program.pdf](file://file-HxSLxfM75kkKgwSiTYbZaF#:~:text=%E2%80%A2%20glBufferSubData%20allows%20you%20to,or%20part%20of%20the%20data)).  
+12. **Multiple Choice:** In an OpenGL program using GLUT, what is typically the **minimum set of callback functions** you should register to ensure something gets drawn on the screen and the window is responsive?  
+    - a) Only a reshape callback (to adjust the viewport).  
+    - b) Only a keyboard callback (so the program can exit on a key press).  
+    - c) A display callback (for rendering), and usually an idle or timer callback to continuously redisplay, plus perhaps an input callback for interactivity (keyboard and/or mouse).  
+    - d) No callbacks at all – you can simply put your drawing code after `glutMainLoop()` and it will execute.  
+13. **Scenario (Short Answer):** You draw a triangle using OpenGL, but it appears **white** even though you intended it to be red. Assuming lighting is not enabled (so the color should come directly from your vertex data or fragment shader), list two possible reasons in your OpenGL program that could result in the triangle showing up as white. (Hint: Consider vertex attributes and shader usage.)  
+14. **Scenario (Short Answer):** Imagine you have configured a VBO and VAO for a triangle’s vertices and colors, and written appropriate shaders. The triangle should be visible, but you see only a blank screen. What are some **steps to debug** this issue? Name at least two things you would check or try (e.g., state settings, functions called, etc.) to find the problem.  
+15. **Multiple Choice:** During the fragment processing stage, multiple fragments might map to the same pixel, especially when 3D objects overlap on screen. How does OpenGL decide which fragment’s color gets written to the framebuffer in such cases?  
+    - a) It always takes the fragment that was generated last (from the primitive drawn last) and overwrites earlier fragments (painter’s algorithm by default).  
+    - b) It uses the **depth buffer** (Z-buffer) to keep track of fragment depths; only the fragment with the closest depth passes the depth test and is drawn, hiding fragments behind it (assuming depth testing is enabled) ([003-OpenGL-Pipeline.pdf](file://file-TxWXK8xrmuB2BKdF12TvRz#:~:text=%E2%80%A2%20Fragments%20are%20processed%20to,pixel%20in%20the%20frame%20buffer)).  
+    - c) It averages the colors of all fragments for that pixel to produce a smooth blending by default.  
+    - d) It randomly picks one of the fragments if more than one occupy the same pixel.  
+
+## Week 3 Quiz (Vertex and Fragment Shaders, GLSL Basics – Part 1 & 2)
+1. **True/False:** In the modern OpenGL pipeline, if you do not provide a custom vertex shader or fragment shader, OpenGL will automatically use a built-in default that performs basic rendering.  
+2. **Multiple Choice:** What is the **role of the vertex shader** in the programmable pipeline?  
+   - a) It processes each vertex, typically transforming vertex positions from object space toward clip space (applying model/view/projection transforms) and computing per-vertex attributes like lighting, texture coords, etc., outputting at least a position (`gl_Position`) for each vertex.  
+   - b) It takes each fragment (pixel) and computes its color.  
+   - c) It assembles vertices into primitives like triangles.  
+   - d) It fills in the depth buffer.  
+3. **Multiple Choice:** Which of the following is **not true** about **GLSL (OpenGL Shading Language)**?  
+   - a) GLSL syntax is based on the C language, but it does **not** support pointers or arbitrary memory access ([mid-term3003_questions.md](file://file-RVDRSnpHKMpvmbgRJjVzyV#:~:text=14,None%20of%20the%20above)) ([mid-term3003_questions.md](file://file-RVDRSnpHKMpvmbgRJjVzyV#:~:text=16,called%20by%20OpenGL%20when%20a)).  
+   - b) GLSL shader programs (vertex/fragment shaders) execute on the GPU, not on the CPU.  
+   - c) In GLSL, you can use built-in vector types like `vec3`, `vec4` and perform component-wise operations; also you can use **swizzling** (reordering components) in expressions.  
+   - d) GLSL requires manual memory management (malloc/free) for arrays and must use explicit pointers for passing variables to shaders.  
+4. **Multiple Choice:** In GLSL, what is a **uniform** variable?  
+   - a) A variable that is constant across a single draw call (it has the same value for all vertices/fragments for that draw), usually set from the application, e.g., transformation matrices, light parameters.  
+   - b) A variable that varies for each vertex, like position or normal.  
+   - c) A special variable that outputs the final color in the fragment shader.  
+   - d) A variable that controls the looping behavior in shaders.  
+5. **True/False:** A **vertex shader** runs once per vertex *and cannot create new vertices on its own* (i.e., one input vertex produces exactly one output vertex from the vertex shader, unless additional optional shader stages are used).  
+6. **True/False:** A **fragment shader** runs for every fragment generated by rasterization and can choose to discard a fragment or output a color (and optionally depth). It does not have direct information about other fragments or the original primitive’s entire shape.  
+7. **Multiple Choice:** Suppose you have the following GLSL code snippet in a fragment shader:  
+   ```glsl
+   in vec3 interpNormal;
+   uniform vec3 uColor;
+   out vec4 fragColor;
+   void main() {
+       float intensity = dot(normalize(interpNormal), vec3(0,0,1));
+       fragColor = vec4(uColor * intensity, 1.0);
+   }
+   ```  
+   Which of the following must be **true** or properly done for this shader to work as intended?  
+   - a) The vertex shader should have an output variable (e.g., `out vec3 interpNormal;`) computing the normal per vertex, and the fragment shader’s `interpNormal` will be the interpolated value of those outputs for each fragment.  
+   - b) The application must provide the uniform `uColor` (e.g., via `glUniform3f`) before drawing, otherwise `uColor` will default to the vector (0,0,0).  
+   - c) The `fragColor` output in the fragment shader represents the final pixel color that will be written to the framebuffer (assuming no further blending overrides it).  
+   - d) **All of the above.**  
+8. **Multiple Choice:** **Swizzling** in GLSL refers to:  
+   - a) Rearranging or replicating components of a vector using dot notation (e.g., `vec4 v; v.yx` gives a `vec2` with v’s y and x components).  
+   - b) A way to shuffle bits within an integer in GLSL.  
+   - c) A method of setting the GPU’s texture filtering mode.  
+   - d) The process of switching between different shaders at runtime.  
+9. **Multiple Choice:** Given a GLSL variable declaration: `uniform mat4 modelViewMatrix;` – where can this variable be used and who supplies its value?  
+   - a) It can be declared in either a vertex or fragment shader (or both), and its value is supplied by the application (CPU) before drawing (it remains constant for all vertices/fragments of a draw call) ([mid-term3003_questions.md](file://file-RVDRSnpHKMpvmbgRJjVzyV#:~:text=22,intensity)) ([mid-term3003_questions.md](file://file-RVDRSnpHKMpvmbgRJjVzyV#:~:text=,projection%20is%20a%20global%20variable)).  
+   - b) It is automatically filled by OpenGL with the current ModelView matrix from the fixed-function pipeline.  
+   - c) It is an output from the vertex shader to the fragment shader.  
+   - d) It is a special variable that doesn’t need to be set; OpenGL knows it as a built-in.  
+10. **Multiple Choice:** If a vertex shader outputs a variable `out vec4 color;`, how should the fragment shader receive this value?  
+    - a) The fragment shader should declare a corresponding `in vec4 color;` (same name and type) to receive the interpolated value.  
+    - b) The fragment shader cannot access data from the vertex shader; it must recompute any colors itself.  
+    - c) The fragment shader should declare `uniform vec4 color;` to get the value.  
+    - d) There is no way to pass the color; one must use a global variable.  
+11. **True/False:** In GLSL, the special variable `gl_Position` must be set in the vertex shader to define the clip-space position of the vertex. If the vertex shader does not write to `gl_Position`, the primitive will likely not appear on screen.  
+12. **Multiple Choice:** Consider the following situation: You have a `const vec4 myColor = vec4(1.0, 0.0, 0.0, 1.0);` defined in your vertex shader (outside of `main()`), and you also want to use `myColor` in your fragment shader to color every fragment the same red. What is the proper way to do this?  
+    - a) Define a `uniform vec4 myColor` in the fragment shader and set it from the application to the same value.  
+    - b) Redefine the `const vec4 myColor` in the fragment shader identically (since it’s a constant, it will be the same).  
+    - c) Output `myColor` from the vertex shader as an `out` variable and declare it as `in` in the fragment shader, so it interpolates (though being constant per vertex, it will effectively be constant for the primitive).  
+    - d) Either (a) or (c) would work correctly.  
+13. **Multiple Choice:** Which of the following statements about **vertex attributes and fragment inputs** is correct?  
+    - a) Vertex attributes (specified by the application in VBOs) can include data like position, normal, texture coordinates, colors, etc. The vertex shader can use these and pass some down to the fragment shader as outputs.  
+    - b) Fragment shader inputs (besides uniforms) are typically the interpolated results of the vertex shader’s outputs for each fragment of the primitive.  
+    - c) If a vertex shader does not pass a certain value (say, texture coordinate) out, the fragment shader cannot access that value unless it computes it itself or has a uniform.  
+    - d) **All of the above.**  
+14. **True/False:** The fragment shader can access the built-in variable `gl_FragCoord`, which contains the window (screen) coordinates of the fragment and its depth, but it cannot directly know which triangle or primitive the fragment came from.  
+15. **Scenario (Short Answer):** You have a simple shader pair: the vertex shader just passes through vertex positions and a color, and the fragment shader outputs that color. However, when running the program, your object appears black (or a single default color) instead of the varying colors you set per vertex. Describe two possible causes for this issue related to how the shaders and OpenGL state are set up. (Hint: Think about vertex attribute pointers and the linkage between the vertex data and the shader inputs.)  
+
+## Week 4 Quiz (Representation & Coordinate Systems, Transformations and Homogeneous Coordinates)
+1. **Multiple Choice:** In 3D graphics, a **coordinate frame (coordinate system)** is defined by:  
+   - a) A reference origin point and a set of basis vectors (axes) emanating from that origin, typically three perpendicular vectors for 3D ([008-9_Coordinate_Frame_Transformations(1).pdf](file://file-MAQaTG1NUJ6B1uoKbfPM2P#:~:text=A%20Coordinate%20Frame)) ([008-9_Coordinate_Frame_Transformations(1).pdf](file://file-MAQaTG1NUJ6B1uoKbfPM2P#:~:text=v2)).  
+   - b) A grid drawn on graph paper.  
+   - c) The screen’s pixel coordinates.  
+   - d) A camera and a light source.  
+2. **Multiple Choice:** What is the difference between a **point** and a **vector** in the context of coordinate systems and transformations?  
+   - a) A point represents a location in space (with coordinates relative to a frame), while a vector represents a direction and magnitude (no fixed position) ([008-9_Coordinate_Frame_Transformations(1).pdf](file://file-MAQaTG1NUJ6B1uoKbfPM2P#:~:text=%E2%80%A2%20Vectors%20are%20entities%20having,and%20direction%2C%20but%20no%20position)) ([008-9_Coordinate_Frame_Transformations(1).pdf](file://file-MAQaTG1NUJ6B1uoKbfPM2P#:~:text=The%20Homogeneous%20representation%20of%20a,Point%20and%20a%20Vector)).  
+   - b) There is no difference; the terms are interchangeable in graphics math.  
+   - c) A point can be scaled and rotated, but a vector cannot.  
+   - d) A vector has one less coordinate value than a point in homogeneous form.  
+3. **True/False:** In homogeneous coordinates, a 4D vector \( (x, y, z, w) \) with \( w = 0 \) represents a direction (vector) rather than a position (point), and \( w = 1 \) represents a point in 3D space ([008-9_Coordinate_Frame_Transformations(1).pdf](file://file-MAQaTG1NUJ6B1uoKbfPM2P#:~:text=The%20Homogeneous%20representation%20of%20a,Point%20and%20a%20Vector)) ([008-9_Coordinate_Frame_Transformations(1).pdf](file://file-MAQaTG1NUJ6B1uoKbfPM2P#:~:text=coordinate%20representation)).  
+4. **Multiple Choice:** Why do we use **homogeneous coordinates (4D)** for 3D graphics transformations?  
+   - a) It allows translation to be represented as matrix multiplication, by using the extra coordinate and 4×4 matrices ([007_Representation_and_Coordinate_Systems(3).pdf](file://file-L2CHLLcgiaTmKbSCPtSRTN#:~:text=%E2%80%A2%20Homogeneous%20coordinates%20are%20key,rotation%2C%20translation%2C%20scaling)) ([007_Representation_and_Coordinate_Systems(3).pdf](file://file-L2CHLLcgiaTmKbSCPtSRTN#:~:text=Change%20of%20Coordinate%20System%20%E2%80%A2,consider%20transformation%20of%20two%20bases)).  
+   - b) It is necessary for representing colors.  
+   - c) It doubles the memory usage for points, which is required for GPU compatibility.  
+   - d) It makes no difference; it’s just a historical curiosity.  
+5. **Multiple Choice:** A **model (object) coordinate system** is to an object as a **world coordinate system** is to:  
+   - a) The entire scene or environment in which the object resides.  
+   - b) The camera’s view.  
+   - c) The screen pixels.  
+   - d) Texture coordinates.  
+6. **Multiple Choice:** Which transformation is typically used to convert coordinates from an object’s local coordinate system to the world coordinate system?  
+   - a) **Modeling transform** – e.g., a combination of rotates/translates/scales that position the object in the world.  
+   - b) **View (camera) transform** – moving the world to camera space.  
+   - c) **Projection transform** – projecting 3D to 2D.  
+   - d) **Viewport transform** – mapping to window pixels.  
+7. **Multiple Choice:** In a standard graphics pipeline, after applying the model and view transformations to objects, coordinates are in the **eye (camera) space**. What is characteristic of this eye coordinate system?  
+   - a) The camera is at the origin and looking down the negative Z-axis in eye space (by convention) ([012_Computer_Viewing.pdf](file://file-KqpiaJUSZxhdeaBQiCnrcr#:~:text=%E2%80%A2%20In%20OpenGL%2C%20initially%20the,camera%20frames%20are%20the%20same)).  
+   - b) The units are in pixels.  
+   - c) It’s the same as world space always.  
+   - d) The Y-axis is inverted compared to object space.  
+8. **True/False:** A **rigid transformation** (also called a Euclidean transform) is a transformation that preserves distances and angles – it can include rotations and translations (and reflections), but not scaling or shear ([008-9_Coordinate_Frame_Transformations(1).pdf](file://file-MAQaTG1NUJ6B1uoKbfPM2P#:~:text=%E2%80%A2%20Rigid%20transformation%3A%20The%204,form%3A%20%F0%9D%91%85%F0%9D%91%85%20%F0%9D%90%AD%F0%9D%90%AD%20%F0%9D%9F%8E%F0%9D%9F%8ET%201)).  
+9. **Multiple Choice:** Which category of transformation **can change the shape or size** of objects? (Assume we’re talking about transforms represented by matrices in homogeneous coordinates.)  
+   - a) **Affine transformations** – they include non-uniform scaling or shear, which do alter an object’s size or shape ([008-9_Coordinate_Frame_Transformations(1).pdf](file://file-MAQaTG1NUJ6B1uoKbfPM2P#:~:text=%E2%80%A2%20Affine%20transformation%3A%20The%204,form%3A%20%F0%9D%90%B4%F0%9D%90%B4%20%F0%9D%90%AD%F0%9D%90%AD%20%F0%9D%9F%8E%F0%9D%9F%8ET%201)).  
+   - b) **Rigid transformations** – they include only rotation/translation, which do *not* change size or shape (just position/orientation).  
+   - c) **Identity transformation** – it leaves objects unchanged entirely.  
+   - d) **None of the above** (no matrix transform can change shape/size).  
+10. **Multiple Choice:** A **rotation matrix** in 3D (without translation) has special properties. Which of these is one of them?  
+    - a) Its inverse is equal to its transpose (the rows and columns are orthonormal vectors).  
+    - b) It has all zeros except possibly a few ones.  
+    - c) It cannot be represented in 4×4 homogeneous form.  
+    - d) It scales vectors in addition to rotating them.  
+11. **Multiple Choice:** Suppose you have a square in the XY-plane (Z=0 for all points). You apply a transformation matrix that includes a shear in X-direction proportional to Y. What happens to the square?  
+    - a) It becomes a parallelogram (slanted shape) – one pair of its sides remain parallel and of the same length, but the right angles are gone (shear keeps area but changes shape).  
+    - b) It remains a square, just moved to a different position.  
+    - c) It turns into a trapezoid that is no longer planar.  
+    - d) It gets rotated 45 degrees with no other change.  
+12. **True/False:** **Composition of transformations** matters: applying a rotation then a translation is generally not the same as applying a translation then a rotation (the order of multiplying transformation matrices is significant).  
+13. **Scenario (Calculation):** You have a point \( P \) at coordinates \((1, 0, 0)\) in an object’s local frame. The object is rotated 90° about the Z-axis (positive rotation around Z) and then translated by \((0, 5, 0)\) in world units. What are the coordinates of the point \( P \) in the world frame after these transformations? (Assume Z-axis rotation of 90° sends the point \((1,0,0)\) to \((0,1,0)\). Provide the resulting coordinates.)  
+14. **Scenario (Conceptual):** You want to rotate a model around its own local Y-axis by 30°, and then move it 10 units along the world X-axis. Should you apply the rotation or the translation first? Explain what happens in both orders (i.e., R then T vs. T then R) and which one achieves the desired result.  
+15. **Multiple Choice:** A **simple polygon** in computer graphics is one that:  
+    - a) Does not self-intersect (its edges only meet at their shared vertices) ([003-OpenGL-Pipeline.pdf](file://file-TxWXK8xrmuB2BKdF12TvRz#:~:text=%E2%80%A2%20Graphics%20systems%20like%20triangles,line%20segment%20between%20two%20points)).  
+    - b) Has all angles < 180° (convex).  
+    - c) Is defined by exactly three vertices.  
+    - d) Lies in a single plane (planar).  
+16. **Multiple Choice:** A **convex polygon** is defined by the property that:  
+    - a) Any line segment connecting any two points inside the polygon lies entirely inside the polygon ([003-OpenGL-Pipeline.pdf](file://file-TxWXK8xrmuB2BKdF12TvRz#:~:text=%E2%80%A2%20Graphics%20systems%20like%20triangles,line%20segment%20between%20two%20points)).  
+    - b) It has no more than four sides.  
+    - c) It must be axis-aligned.  
+    - d) It is also simple and planar by necessity (no self-intersections, flat surface).  
+17. **Multiple Choice:** If an object’s model matrix includes a uniform scale of 2.0, and then you rotate the object 45°, and then translate by (5,0,0), which of the following is true about the final effect?  
+    - a) The object is twice as large, rotated 45°, and then moved 5 units in world X (which is not simply 5 units in its local X due to rotation).  
+    - b) The rotation happens in the object’s scaled space, so it may not be exactly 45° in world space.  
+    - c) The translation (5,0,0) happens along the world X-axis regardless of the object’s rotation.  
+    - d) **(a) and (c)** are true.  
+18. **Scenario (Short Answer):** Explain what the **viewing transformation (view matrix)** accomplishes in terms of coordinate systems. For example, if you have a world with various objects and a camera positioned somewhere, what does applying the camera’s view matrix to all objects do to their coordinates?  
+
+## Week 5 Quiz (Input, Interaction, and Callbacks)
+1. **Multiple Choice:** In the context of a graphics program, what is meant by a **“logical input device”**?  
+   - a) An abstraction of input that categorizes devices by the type of data they return (e.g., locator returns a position, string returns text, pick returns a selection) rather than the physical device ([010_Input_Interaction_and_Callbacks(1).pdf](file://file-EB4DeVtGhTgtvSgvbviP6t#:~:text=%E2%80%A2%20Graphics%20APIs%20define%20different,logical%20devices%20based%20on%20the)) ([010_Input_Interaction_and_Callbacks(1).pdf](file://file-EB4DeVtGhTgtvSgvbviP6t#:~:text=Logical%20Input%20Devices%20%28cont)).  
+   - b) Any input device that is currently plugged into the computer.  
+   - c) A device used only in logical operations (like a binary switch).  
+   - d) The hardware driver for an input device.  
+2. **Multiple Choice:** According to the logical device types, if **Device A** returns a string of characters and **Device B** returns the ID of a selected on-screen object, what logical device classes are A and B?  
+   - a) **String** device and **Pick** device, respectively ([010_Input_Interaction_and_Callbacks(1).pdf](file://file-EB4DeVtGhTgtvSgvbviP6t#:~:text=%E2%80%93%20String%3A%20a%20device%20that,via%20key%20presses)) ([010_Input_Interaction_and_Callbacks(1).pdf](file://file-EB4DeVtGhTgtvSgvbviP6t#:~:text=user%20to%20input%20numerical%20data%2C,a%20value%20or%20a%20range)).  
+   - b) **Keyboard** and **Mouse** (physical devices).  
+   - c) **Stroke** and **Choice**.  
+   - d) **Valuator** and **Locator**.  
+3. **Multiple Choice:** What is the difference between **immediate mode (request mode)** input and **event mode** input in interactive graphics?  
+   - a) In **request mode**, the program explicitly waits for input (e.g., calling a function to get a value, like waiting for the user to press enter), whereas in **event mode**, input is handled asynchronously via events and callbacks whenever the input occurs ([010_Input_Interaction_and_Callbacks(1).pdf](file://file-EB4DeVtGhTgtvSgvbviP6t#:~:text=Request%20Mode%20%E2%80%A2%20For%20request,measure%20is%20read%20by%20the)) ([010_Input_Interaction_and_Callbacks(1).pdf](file://file-EB4DeVtGhTgtvSgvbviP6t#:~:text=%E2%80%A2%20A%20typical%20example%20is,keyboard%20input%20from%20the%20user)).  
+   - b) Immediate mode input refers to legacy OpenGL’s `glBegin/glEnd`. Event mode refers to modern buffer operations.  
+   - c) They are the same; the terms are interchangeable.  
+   - d) Immediate mode input is faster than event mode.  
+4. **True/False:** In an event-driven graphics library like GLUT, if no callback function is registered for a certain event (for example, no mouse-click callback), then mouse clicks in the window are simply ignored (no action happens) ([010_Input_Interaction_and_Callbacks(1).pdf](file://file-EB4DeVtGhTgtvSgvbviP6t#:~:text=match%20at%20L480%20callback%20function,the%20event%2C%20the%20event%20is)).  
+5. **Multiple Choice:** Which of the following is **true** about using **GLUT (OpenGL Utility Toolkit)** for interactive programs?  
+   - a) GLUT provides callback registration functions like `glutDisplayFunc`, `glutKeyboardFunc`, `glutMouseFunc` to handle drawing and input events ([010_Input_Interaction_and_Callbacks(1).pdf](file://file-EB4DeVtGhTgtvSgvbviP6t#:~:text=%E2%80%A2%20Examples%20of%20the%20GLUT,callbacks%20function%20for%20various%20events)).  
+   - b) GLUT automatically creates a default menu UI for any program.  
+   - c) GLUT manages an event loop internally; once you call `glutMainLoop()`, your program will spend most of its time inside that loop invoking callbacks when events occur.  
+   - d) **(a) and (c)** are true.  
+6. **Multiple Choice:** In a typical OpenGL program using GLUT, what does the **idle callback** (`glutIdleFunc`) allow you to do?  
+   - a) Continuously execute some code when there are no other events (e.g., update animation and then trigger a new display) so that your application can redraw or animate smoothly even when no user input is happening.  
+   - b) It is called when the CPU is idle to put the GPU to sleep.  
+   - c) It is required to process keyboard events.  
+   - d) It will be called exactly once after `glutMainLoop` starts and never again.  
+7. **True/False:** Each window created by GLUT has its own separate OpenGL context, meaning if you open two windows, each maintains its own state (like current shaders, buffers, etc.) independent of the other.  
+8. **Multiple Choice:** The term **“callback function”** in GUI/graphics libraries refers to:  
+   - a) A function that you (the programmer) write and register, which the system will call when a certain event occurs (e.g., a key press triggers your keyboard callback) ([mid-term3003_questions.md](file://file-RVDRSnpHKMpvmbgRJjVzyV#:~:text=16,d%29%20are%20correct)).  
+   - b) Any function that calls another function.  
+   - c) A function for error handling that “calls back” upon failure.  
+   - d) The main function of a program.  
+9. **Scenario:** Suppose you registered a keyboard callback with `glutKeyboardFunc(myKeyFunc)`. Describe how GLUT uses this when the user presses a key. What information is typically passed to your `myKeyFunc` callback? (Short answer: mention the parameters like which key and maybe mouse x,y position or special key indicator.)  
+10. **Scenario:** You want to have a right-click context menu in your OpenGL application using GLUT. Outline the basic steps to create a simple pop-up menu with GLUT (no code needed, just describe the sequence of what you need to set up, e.g., create menu, add entries, attach to mouse button).  
+11. **Multiple Choice:** If you receive the mouse callback in GLUT with coordinates `(x, y)` of a click, and you want to map this to OpenGL’s normalized device coordinates or your world coordinates, what must you consider?  
+    - a) The origin of the window coordinate `(0,0)` is typically at the top-left in windowing systems, whereas OpenGL’s default coordinate origin (for NDC) is center or bottom-left, so you may need to invert the y coordinate and normalize by window width/height ([011_more_on_Callbacks.pdf](file://file-1tAmsy5WxF2RQ8FKXzzYhn#:~:text=%E2%80%A2%20The%20mouse%20position%20on,done%20from%20top%20to%20bottom)) ([011_more_on_Callbacks.pdf](file://file-1tAmsy5WxF2RQ8FKXzzYhn#:~:text=%E2%80%93%20x%3Dx%2F%28w%2F2%29%20%E2%80%93%201)).  
+    - b) GLUT already gives coordinates in the same system that OpenGL uses for drawing vertices, so no conversion is needed.  
+    - c) The x and y are in range -1 to 1 already.  
+    - d) The coordinates are given in 3D, not 2D.  
+12. **True/False:** Using GLUT, if you want to animate something, one common approach is to update object positions in an idle function or timer function, call `glutPostRedisplay()` to request a redraw, and then in the display callback, draw the objects at their new positions ([010_Input_Interaction_and_Callbacks(1).pdf](file://file-EB4DeVtGhTgtvSgvbviP6t#:~:text=callback%20function)).  
+13. **Scenario (Short Answer):** You have a program where you handle arrow key presses via a GLUT special key callback (`glutSpecialFunc`). When the user presses the Left arrow, you want to rotate an object left. The callback is firing, but the object isn’t rotating. What could be missing in your program for the rotation to actually reflect on screen? (Hint: think about what needs to happen after updating the object’s rotation state.)  
+14. **Scenario (Short Answer):** Explain how you would implement a simple **dragging** interaction: when the user presses and holds the left mouse button on an object and moves the mouse, the object should follow the cursor. (Describe which callbacks you’d use and the general approach to update the object’s position.)  
+15. **Multiple Choice:** In an interactive graphics program, what is the typical order of operations to initialize and start the event loop (using GLUT as an example)?  
+    - a) Initialize GLUT (e.g., `glutInit`), create a window (`glutCreateWindow`), set up desired callbacks (display, input, etc.), then call `glutMainLoop()` to hand over control to GLUT.  
+    - b) Call `glutMainLoop()` first, then create a window.  
+    - c) Only call the display callback, nothing else is needed.  
+    - d) Initialize OpenGL state after entering the main loop.  
+
+## Week 6 Quiz (More on Callbacks continued, Computer Viewing & Projection)
+1. **Multiple Choice:** In GLUT, there is support for simple pop-up menus. How do you typically **trigger a GLUT menu** to appear?  
+   - a) Attach the menu to a mouse button (often the right mouse button) using `glutAttachMenu`, so that when that button is pressed, the menu appears.  
+   - b) GLUT menus appear automatically on a right-click without any setup.  
+   - c) Use a keyboard shortcut to show the menu.  
+   - d) Call the menu handler directly from within the display callback.  
+2. **Multiple Choice:** When reading mouse input in OpenGL (using a library like GLUT), why might you need to **invert the y-coordinate** from the mouse callback to use it in your scene?  
+   - a) Window systems typically give (x,y) with y=0 at **top** of the window, but OpenGL’s drawing coordinates (if using glViewport with origin at bottom) treat y=0 at bottom. So you convert y to `height - y` ([011_more_on_Callbacks.pdf](file://file-1tAmsy5WxF2RQ8FKXzzYhn#:~:text=%E2%80%A2%20The%20mouse%20position%20on,done%20from%20top%20to%20bottom)).  
+   - b) It’s only necessary if you use a perspective projection.  
+   - c) Because the mouse hardware reports inverted data.  
+   - d) Modern OpenGL contexts automatically handle this; no inversion needed.  
+3. **Multiple Choice:** What is the significance of **glutReshapeFunc()** callback in an OpenGL program?  
+   - a) It allows the program to adjust the viewport and projection matrix when the window is resized. For example, you can call `glViewport` and update the projection to maintain aspect ratio.  
+   - b) It prevents the window from being resized.  
+   - c) It is called continuously to reshape objects.  
+   - d) It handles switching between windowed and fullscreen modes automatically.  
+4. **True/False:** The default OpenGL camera (before any viewing transformations) is located at the world origin looking along the -Z axis, with the up direction along +Y ([012_Computer_Viewing.pdf](file://file-KqpiaJUSZxhdeaBQiCnrcr#:~:text=%E2%80%A2%20In%20OpenGL%2C%20initially%20the,camera%20frames%20are%20the%20same)).  
+5. **Multiple Choice:** The OpenGL **viewing transformation** (often set up via `gluLookAt` or manually) is conceptually:  
+   - a) A transform that moves/rotates the entire world so that the camera is at the origin looking down -Z. (It’s equivalent to moving the camera to the origin with opposite movement of the camera’s real motion) ([012_Computer_Viewing.pdf](file://file-KqpiaJUSZxhdeaBQiCnrcr#:~:text=%E2%80%A2%20In%20OpenGL%2C%20initially%20the,camera%20frames%20are%20the%20same)) ([012_Computer_Viewing.pdf](file://file-KqpiaJUSZxhdeaBQiCnrcr#:~:text=%E2%80%A2%20The%20camera%20is%20located,origin%20and%20points%20in%20the)).  
+   - b) A projection that maps 3D to 2D.  
+   - c) Always an orthographic transform by default.  
+   - d) Applied after projection in the pipeline.  
+6. **Multiple Choice:** Calling `gluLookAt(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ)` generates a view matrix. What does this view matrix do?  
+   - a) It rotates and translates the world so that the camera is positioned at `(eyeX, eyeY, eyeZ)` and looking toward `(centerX, centerY, centerZ)` with the given up direction. Points in the world are transformed into the camera’s coordinate system.  
+   - b) It projects the scene onto a 2D plane.  
+   - c) It moves the camera in world space (equivalent to the inverse transformation on the world).  
+   - d) **(a) and (c)** are two ways to describe the same result (camera transform vs world transform).  
+7. **Multiple Choice:** **gluPerspective(fovY, aspect, zNear, zFar)** sets up a perspective projection. What effect do the parameters have?  
+   - a) `fovY` is the vertical field-of-view angle (in degrees) – a larger fov makes more of the scene visible but objects appear smaller (wide-angle lens effect), a smaller fov zooms in ([012_Computer_Viewing.pdf](file://file-KqpiaJUSZxhdeaBQiCnrcr#:~:text=In%20perspective%20projection%2C%20the%20camera%E2%80%99s,focal%20length%20%F0%9D%91%91%F0%9D%91%91%20is%20finite)) ([012_Computer_Viewing.pdf](file://file-KqpiaJUSZxhdeaBQiCnrcr#:~:text=%E2%80%A2%20Draw%20line%20from%20object,Calculate%20where%20each%20intersects%20projection)).  
+   - b) `aspect` is the viewport width/height ratio – it ensures circles don’t appear squashed (must match the actual window aspect).  
+   - c) `zNear` and `zFar` define the distances of the near and far clipping planes from the camera – objects closer than zNear or beyond zFar will be clipped (and also these values affect depth buffer precision).  
+   - d) **All of the above.**  
+8. **True/False:** In a perspective projection, **parallel lines** in the 3D world that are not parallel to the projection plane will appear to converge in the 2D projected image (e.g., railroad tracks meeting at a vanishing point), whereas in an orthographic projection, parallel lines remain parallel in the image ([012_Computer_Viewing.pdf](file://file-KqpiaJUSZxhdeaBQiCnrcr#:~:text=%E2%80%A2%20Draw%20parallel%20lines%20from,vertex%20to%20the%20projection%20plane)) ([012_Computer_Viewing.pdf](file://file-KqpiaJUSZxhdeaBQiCnrcr#:~:text=coordinates%20In%20orthographic%20projection%2C%20the,focal%20length%20is%20not%20applicable)).  
+9. **Multiple Choice:** In OpenGL, an **orthographic projection** (glOrtho) differs from a perspective projection (glFrustum/gluPerspective) in that:  
+   - a) Orthographic projection does not diminish object size with distance – an object appears the same size regardless of its depth (useful for 2D rendering or CAD), while perspective projection makes far objects look smaller (provides depth cues) ([012_Computer_Viewing.pdf](file://file-KqpiaJUSZxhdeaBQiCnrcr#:~:text=coordinates%20In%20orthographic%20projection%2C%20the,focal%20length%20is%20not%20applicable)) ([012_Computer_Viewing.pdf](file://file-KqpiaJUSZxhdeaBQiCnrcr#:~:text=In%20perspective%20projection%2C%20the%20camera%E2%80%99s,focal%20length%20%F0%9D%91%91%F0%9D%91%91%20is%20finite)).  
+   - b) Orthographic projection has no near or far clipping planes.  
+   - c) Perspective projection cannot represent parallel lines correctly.  
+   - d) Orthographic projection is always aligned with the screen axes and cannot be rotated.  
+10. **Multiple Choice:** What is the **view volume** in the context of viewing transformations?  
+    - a) It’s the region of space that the camera can see after the projection transform – for perspective it’s a frustum (a pyramid with the top cut off by the near plane), for orthographic it’s a rectangular prism (box) ([003-OpenGL-Pipeline.pdf](file://file-TxWXK8xrmuB2BKdF12TvRz#:~:text=Clipping%20%E2%80%A2%20Just%20as%20a,the%20whole%20world%2C%20the%20virtual)) ([012_Computer_Viewing.pdf](file://file-KqpiaJUSZxhdeaBQiCnrcr#:~:text=A%20simple%20perspective%20projection%3A%20Center,0)).  
+    - b) It’s the volume of the 3D model geometry.  
+    - c) It’s the volume of the OpenGL state.  
+    - d) It refers to audio volume in multimedia applications.  
+11. **True/False:** In OpenGL’s legacy pipeline, you typically set `glMatrixMode(GL_PROJECTION)` to define projection (with glFrustum/gluPerspective or glOrtho) and `glMatrixMode(GL_MODELVIEW)` to define the view and modeling transforms (like gluLookAt for camera and glTranslate/Rotate for models) ([012_Computer_Viewing.pdf](file://file-KqpiaJUSZxhdeaBQiCnrcr#:~:text=glMatrixMode)) ([012_Computer_Viewing.pdf](file://file-KqpiaJUSZxhdeaBQiCnrcr#:~:text=glMatrixMode,MODELVIEW%20with%20gluLookAt)).  
+12. **Scenario (Short Answer):** If the aspect ratio of the window changes (say the window is made much wider), what is a common step you must take in your projection setup to ensure the scene doesn’t look distorted? (Hint: think of `gluPerspective` or `glOrtho` parameters.)  
+13. **Scenario (Short Answer):** You have a camera at position (0, 0, 10) in world coordinates, looking toward the origin (0,0,0). Write a conceptual `gluLookAt` call for this camera, assuming +Y is up. Then describe what effect this will have on objects’ coordinates when applied (for example, where does a world point at (0,0,0) end up in eye space?).  
+14. **Scenario (Short Answer):** Explain what happens if you set the near clipping plane (`zNear`) in a perspective projection to a very tiny value (e.g., 0.0001) while keeping the far plane large (e.g., 1000). Why is having an extremely close near plane problematic in practice?  
+15. **Scenario (Short Answer):** In a 3D scene, you want to render a Heads-Up Display (HUD) as 2D overlay on top of the 3D view (for example, text or icons that always face the camera and don’t move with the 3D world). How would you configure the projection and modelview matrices to draw this HUD after rendering the 3D scene? (Hint: consider using an orthographic projection or switching matrices mode.)
