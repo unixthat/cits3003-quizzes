@@ -1011,24 +1011,52 @@ const renderQuiz = (quiz) => {
  */
 const showQuestion = () => {
     const quiz = quizzes[state.currentQuiz];
+    if (!quiz) return;
+
     const question = quiz.questions[state.currentQuestionIndex];
     const container = document.getElementById('question-container');
+    if (!container || !question) return;
 
-    let questionHTML = `
+    const isLastQuestion = state.currentQuestionIndex === quiz.questions.length - 1;
+
+    container.innerHTML = `
         <div class="question">
             <h3>Question ${state.currentQuestionIndex + 1} of ${quiz.questions.length}</h3>
             <p>${question.text}</p>
+            ${generateOptionsHTML(question)}
+        </div>
+        <div class="navigation-buttons">
+            ${state.currentQuestionIndex > 0
+            ? `<button class="nav-btn" onclick="previousQuestion()">Previous</button>`
+            : ''}
+            ${isLastQuestion
+            ? `<button class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>`
+            : `<button class="nav-btn" onclick="nextQuestion()">Next</button>`}
+        </div>
     `;
 
+    // Restore previous answer if it exists
+    const savedAnswer = state.userAnswers[state.currentQuestionIndex];
+    if (savedAnswer !== undefined) {
+        highlightSelectedAnswer(savedAnswer);
+    }
+};
+
+/**
+ * Generates HTML for question options
+ * @param {Object} question - The question object
+ * @returns {string} The generated HTML
+ */
+const generateOptionsHTML = (question) => {
     if (question.type === 'true-false') {
-        questionHTML += `
+        return `
             <div class="options">
                 <div class="option" onclick="selectAnswer(true)">True</div>
                 <div class="option" onclick="selectAnswer(false)">False</div>
             </div>
         `;
-    } else if (question.type === 'multiple-choice') {
-        questionHTML += `
+    } else {
+        return `
             <div class="options">
                 ${question.options.map((option, index) => `
                     <div class="option" onclick="selectAnswer(${index})">${option}</div>
@@ -1036,15 +1064,6 @@ const showQuestion = () => {
             </div>
         `;
     }
-
-    questionHTML += `
-        </div>
-        <div class="navigation-buttons">
-            ${state.currentQuestionIndex > 0 ? `<button class="nav-btn" onclick="previousQuestion()">Previous</button>` : ''}
-            <button class="nav-btn" onclick="nextQuestion()">${state.currentQuestionIndex === quiz.questions.length - 1 ? 'Finish' : 'Next'}</button>
-        </div>
-    `;
-    container.innerHTML = questionHTML;
 };
 
 /**
@@ -1087,6 +1106,8 @@ const previousQuestion = () => {
  */
 const nextQuestion = () => {
     const quiz = quizzes[state.currentQuiz];
+    if (!quiz) return;
+
     if (state.currentQuestionIndex < quiz.questions.length - 1) {
         state.currentQuestionIndex++;
         showQuestion();
