@@ -1056,23 +1056,23 @@ function showQuizList() {
         <div class="quiz-list">
             <div class="quiz-card" onclick="loadQuiz(1)">
                 <h2>Practice Test 1</h2>
-                <p>Topics: OpenGL Basics, Rendering Pipeline</p>
+                <p>Topics: Practice Mid-Semester Test 1</p>
             </div>
             <div class="quiz-card" onclick="loadQuiz(2)">
                 <h2>Practice Test 2</h2>
-                <p>Topics: Transformations and Coordinate Systems</p>
+                <p>Topics: Practice Mid-Semester Test 2</p>
             </div>
             <div class="quiz-card" onclick="loadQuiz(3)">
                 <h2>Practice Test 3</h2>
-                <p>Topics: Shaders and Graphics Pipeline</p>
+                <p>Topics: Practice Mid-Semester Test 3</p>
             </div>
             <div class="quiz-card" onclick="loadQuiz(4)">
                 <h2>Practice Test 4</h2>
-                <p>Topics: Modern OpenGL and Buffers</p>
+                <p>Topics: Practice Mid-Semester Test 4</p>
             </div>
             <div class="quiz-card" onclick="loadQuiz(5)">
                 <h2>Practice Test 5</h2>
-                <p>Topics: Advanced OpenGL Concepts</p>
+                <p>Topics: Practice Mid-Semester Test 5</p>
             </div>
         </div>
     `;
