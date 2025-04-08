@@ -935,7 +935,7 @@ function loadQuiz(quizNumber) {
     currentQuiz = quizNumber;
     currentQuestionIndex = 0;
     userAnswers = [];
-    
+
     const quiz = quizzes[quizNumber];
     if (!quiz) {
         alert('Quiz not found!');
@@ -1003,17 +1003,17 @@ function previousQuestion() {
 function selectAnswer(answer) {
     const options = document.querySelectorAll('.option');
     options.forEach(option => option.classList.remove('selected'));
-    
+
     const selectedOption = event.target;
     selectedOption.classList.add('selected');
-    
+
     userAnswers[currentQuestionIndex] = answer;
 }
 
 function submitQuiz() {
     const quiz = quizzes[currentQuiz];
     let score = 0;
-    
+
     userAnswers.forEach((answer, index) => {
         const question = quiz.questions[index];
         if (question.type === 'true-false') {
@@ -1024,7 +1024,7 @@ function submitQuiz() {
     });
 
     const percentage = (score / quiz.questions.length) * 100;
-    
+
     const container = document.querySelector('.container');
     container.innerHTML = `
         <button class="back-btn" onclick="showQuizList()">Back to Quiz List</button>
@@ -1075,4 +1075,22 @@ function showQuizList() {
 }
 
 // Initialize the quiz list when the page loads
-document.addEventListener('DOMContentLoaded', showQuizList); 
+document.addEventListener('DOMContentLoaded', showQuizList);
+
+// Add event listener for page visibility changes
+document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') {
+        // Save any unsaved progress when the page is hidden
+        if (currentQuiz !== null && userAnswers.length > 0) {
+            localStorage.setItem(`quiz${currentQuiz}_answers`, JSON.stringify(userAnswers));
+        }
+    }
+});
+
+// Add event listener for beforeunload
+window.addEventListener('beforeunload', (event) => {
+    // Save any unsaved progress before the page is unloaded
+    if (currentQuiz !== null && userAnswers.length > 0) {
+        localStorage.setItem(`quiz${currentQuiz}_answers`, JSON.stringify(userAnswers));
+    }
+}); 
