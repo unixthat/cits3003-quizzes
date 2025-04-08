@@ -1,5 +1,5 @@
 // Import quiz data
-import quizData from './quizData.js';
+import quizData from './quizData.js?v=1.0.1';
 
 /**
  * @typedef {Object} State
