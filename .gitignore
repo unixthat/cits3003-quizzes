@@ -21,11 +21,6 @@ Desktop.ini
 *.swo
 *~
 
-# Project specific
-extracted_slides/
-pdfs/
-*.pdf
-
 # Logs and databases
 *.log
 *.sqlite

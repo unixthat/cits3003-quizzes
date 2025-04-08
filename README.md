@@ -1,41 +1,109 @@
-# CITS3003 Computer Graphics Quiz Application
+# CITS3003 Computer Vision Course Materials
 
-An interactive web-based quiz application for CITS3003 Computer Graphics course.
+This repository contains the course materials for CITS3003 Computer Vision, including lecture slides, textbook content, and quizzes.
 
-## Project Structure
+## Directory Structure
 
 ```
 .
-├── content/               # Source content
-│   ├── quizzes/          # Quiz content in markdown
-│   │   ├── quiz1/       # Quiz 1 content
-│   │   ├── quiz2/       # Quiz 2 content
-│   │   └── ...
-│   └── source/          # Other source materials
-├── index.html           # Main web application
-├── styles.css          # Application styles
-└── script.js           # Application logic
+├── content/                  # Extracted content from PDFs
+│   ├── lectures/            # Lecture content
+│   │   └── extracted_slides/ # Extracted lecture slides
+│   ├── pdfs/                # Source PDF files
+│   │   ├── lectures/        # Lecture PDFs
+│   │   └── textbooks/       # Textbook PDFs
+│   └── textbook/            # Textbook content
+│       ├── content.md       # Extracted textbook content
+│       ├── table_of_contents.md # Textbook table of contents
+│       ├── extract_textbook.sh # Extraction script
+│       └── cits3003-computer-graphics-textbook.pdf # Source textbook
+├── docs/                    # Documentation
+│   ├── bash/               # Bash-specific documentation
+│   ├── zsh/                # Zsh-specific documentation
+│   └── common/             # Common shell scripting documentation
+├── quizzes/                 # Quiz content
+│   ├── week1/              # Week 1 quiz
+│   │   └── documentation/  # Quiz documentation
+│   │       ├── extracted/  # Extracted content
+│   │       └── pdfs/      # Source PDFs
+│   ├── week2/              # Week 2 quiz
+│   │   └── documentation/  # Quiz documentation
+│   │       ├── extracted/  # Extracted content
+│   │       └── pdfs/      # Source PDFs
+│   ├── week3/              # Week 3 quiz
+│   │   └── documentation/  # Quiz documentation
+│   │       ├── extracted/  # Extracted content
+│   │       └── pdfs/      # Source PDFs
+│   ├── week4/              # Week 4 quiz
+│   │   └── documentation/  # Quiz documentation
+│   │       ├── extracted/  # Extracted content
+│   │       └── pdfs/      # Source PDFs
+│   ├── week5/              # Week 5 quiz
+│   │   └── documentation/  # Quiz documentation
+│   │       ├── extracted/  # Extracted content
+│   │       └── pdfs/      # Source PDFs
+│   ├── week6/              # Week 6 quiz
+│   │   └── documentation/  # Quiz documentation
+│   │       ├── extracted/  # Extracted content
+│   │       └── pdfs/      # Source PDFs
+│   ├── full_quizzes/       # Complete quiz files
+│   │   ├── quiz1/         # Week 1 complete quiz
+│   │   ├── quiz2/         # Week 2 complete quiz
+│   │   ├── quiz3/         # Week 3 complete quiz
+│   │   ├── quiz4/         # Week 4 complete quiz
+│   │   └── quiz5/         # Week 5 complete quiz
+│   └── README.md           # Quiz documentation
+├── index.html              # Main website page
+├── styles.css              # CSS styling
+├── script.js               # JavaScript functionality
+├── quizData.js             # Quiz data for website
+├── README.md               # This file
+└── WEBSITE.md              # Website documentation
 ```
 
-## Features
+## Content Organization
 
-- Interactive quiz interface
-- True/False and Multiple Choice questions
-- Immediate feedback on answers
-- Detailed explanations for each question
-- Progress tracking
-- Score calculation
+1. **Lectures**
+   - Weekly lecture slides in PDF format
+   - Extracted markdown versions for web display
+   - Complete lecture notes combined
 
-## Development
+2. **Textbook**
+   - Source textbook in PDF format
+   - Extracted markdown version
+   - Table of contents
 
-The application is built with vanilla JavaScript and doesn't require any build steps. Simply open `index.html` in a web browser to run the application.
+3. **Quizzes**
+   - Weekly quizzes with documentation and source PDFs
+   - Complete quiz files in full_quizzes directory
+   - Practice quizzes (midterm and final)
 
-## Content Management
+## Usage
 
-Quiz content is stored in markdown files under the `content/quizzes` directory. Each quiz has its own directory containing:
-- `questions/quizN.md`: Quiz questions
-- `answers/quizN.md`: Quiz answers and explanations
+1. **For Students**
+   - Access lecture materials through the website
+   - Take weekly quizzes
+   - Practice with complete quiz files
+   - Reference textbook content
 
-## License
+2. **For Instructors**
+   - Manage course content
+   - Update quizzes and materials
+   - Track student progress
 
-This project is for educational purposes only.
+## Maintenance
+
+1. **Adding New Content**
+   - Place source PDFs in appropriate directories
+   - Run extraction scripts
+   - Update documentation
+
+2. **Updating Content**
+   - Follow version control guidelines
+   - Update relevant README files
+   - Test website functionality
+
+3. **Documentation**
+   - Keep README files up to date
+   - Document any new features
+   - Update directory structure as needed
