@@ -1056,23 +1056,19 @@ function showQuizList() {
         <div class="quiz-list">
             <div class="quiz-card" onclick="loadQuiz(1)">
                 <h2>Practice Test 1</h2>
-                <p>Practice Mid-Semester Test 1</p>
             </div>
             <div class="quiz-card" onclick="loadQuiz(2)">
                 <h2>Practice Test 2</h2>
-                <p>Practice Mid-Semester Test 2</p>
             </div>
             <div class="quiz-card" onclick="loadQuiz(3)">
                 <h2>Practice Test 3</h2>
-                <p>Practice Mid-Semester Test 3</p>
             </div>
             <div class="quiz-card" onclick="loadQuiz(4)">
                 <h2>Practice Test 4</h2>
-                <p>Practice Mid-Semester Test 4</p>
             </div>
             <div class="quiz-card" onclick="loadQuiz(5)">
                 <h2>Practice Test 5</h2>
-                <p>Practice Mid-Semester Test 5</p>
+            </div>
             </div>
         </div>
     `;
