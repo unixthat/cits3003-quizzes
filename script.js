@@ -6,13 +6,59 @@ import quizData from './quizData.js';
  * @property {number|null} currentQuiz - Current quiz number
  * @property {number} currentQuestionIndex - Current question index
  * @property {Array} userAnswers - User's answers for the current quiz
+ * @property {Array} shuffledQuestions - The shuffled questions array for the current quiz
+ * @property {Array} optionMappings - Maps original option indices to shuffled indices
  */
 
 /** @type {State} */
 const state = {
     currentQuiz: null,
     currentQuestionIndex: 0,
-    userAnswers: []
+    userAnswers: [],
+    shuffledQuestions: [],
+    optionMappings: []
+};
+
+/**
+ * Shuffles an array using the Fisher-Yates algorithm
+ * @param {Array} array - The array to shuffle
+ * @returns {Array} The shuffled array
+ */
+const shuffleArray = (array) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+};
+
+/**
+ * Creates a mapping between original and shuffled indices
+ * @param {Array} originalArray - The original array
+ * @param {Array} shuffledArray - The shuffled array
+ * @returns {Array} Mapping from original to shuffled indices
+ */
+const createIndexMapping = (originalArray, shuffledArray) => {
+    const mapping = new Array(originalArray.length);
+    for (let i = 0; i < originalArray.length; i++) {
+        mapping[i] = shuffledArray.indexOf(originalArray[i]);
+    }
+    return mapping;
+};
+
+/**
+ * Creates a reverse mapping from shuffled to original indices
+ * @param {Array} originalArray - The original array
+ * @param {Array} shuffledArray - The shuffled array
+ * @returns {Array} Mapping from shuffled to original indices
+ */
+const createReverseMapping = (originalArray, shuffledArray) => {
+    const mapping = new Array(originalArray.length);
+    for (let i = 0; i < originalArray.length; i++) {
+        mapping[shuffledArray.indexOf(originalArray[i])] = i;
+    }
+    return mapping;
 };
 
 /**
@@ -38,10 +84,33 @@ window.loadQuiz = (quizNumber) => {
         throw new Error('Quiz not found!');
     }
 
-    // Reset state
+    // Reset state and shuffle questions
     state.currentQuiz = quizNumber;
     state.currentQuestionIndex = 0;
     state.userAnswers = [];
+
+    // Shuffle questions
+    state.shuffledQuestions = shuffleArray(quiz.questions);
+
+    // Create option mappings for multiple-choice questions
+    state.optionMappings = state.shuffledQuestions.map(question => {
+        if (question.type === 'multiple-choice') {
+            const shuffledOptions = shuffleArray(question.options);
+            const originalToShuffled = createIndexMapping(question.options, shuffledOptions);
+            const shuffledToOriginal = createReverseMapping(question.options, shuffledOptions);
+
+            // Update the question with shuffled options
+            question.shuffledOptions = shuffledOptions;
+            question.originalToShuffled = originalToShuffled;
+            question.shuffledToOriginal = shuffledToOriginal;
+
+            return {
+                originalToShuffled,
+                shuffledToOriginal
+            };
+        }
+        return null;
+    });
 
     // Try to load saved progress
     try {
@@ -77,7 +146,16 @@ window.showQuizList = () => {
 };
 
 window.selectAnswer = (answer) => {
-    state.userAnswers[state.currentQuestionIndex] = answer;
+    const question = state.shuffledQuestions[state.currentQuestionIndex];
+
+    // For multiple-choice questions, map the shuffled index back to the original
+    if (question.type === 'multiple-choice') {
+        const originalIndex = question.shuffledToOriginal[answer];
+        state.userAnswers[state.currentQuestionIndex] = originalIndex;
+    } else {
+        state.userAnswers[state.currentQuestionIndex] = answer;
+    }
+
     highlightSelectedAnswer(answer);
     saveProgress();
 };
@@ -96,6 +174,9 @@ window.nextQuestion = () => {
     if (state.currentQuestionIndex < quiz.questions.length - 1) {
         state.currentQuestionIndex++;
         showQuestion();
+    } else {
+        // If we're on the last question and clicking next, submit the quiz
+        submitQuiz();
     }
 };
 
@@ -140,13 +221,9 @@ const showQuestion = () => {
     const quiz = quizData[state.currentQuiz];
     if (!quiz) return;
 
-    const question = quiz.questions[state.currentQuestionIndex];
+    const question = state.shuffledQuestions[state.currentQuestionIndex];
     const container = document.getElementById('question-container');
     if (!container || !question) return;
-
-    const isLastQuestion = state.currentQuestionIndex === quiz.questions.length - 1;
-    const allQuestionsAnswered = state.userAnswers.length === quiz.questions.length &&
-        state.userAnswers.every(answer => answer !== undefined);
 
     container.innerHTML = `
         <div class="question">
@@ -158,9 +235,7 @@ const showQuestion = () => {
             ${state.currentQuestionIndex > 0
             ? `<button class="nav-btn" onclick="previousQuestion()">Previous</button>`
             : ''}
-            ${allQuestionsAnswered
-            ? `<button class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>`
-            : `<button class="nav-btn" onclick="nextQuestion()">Next</button>`}
+            <button class="nav-btn" onclick="nextQuestion()">Next</button>
         </div>
     `;
 
@@ -185,9 +260,11 @@ const generateOptionsHTML = (question) => {
             </div>
         `;
     } else {
+        // Use shuffled options if available
+        const options = question.shuffledOptions || question.options;
         return `
             <div class="options">
-                ${question.options.map((option, index) => `
+                ${options.map((option, index) => `
                     <div class="option" onclick="selectAnswer(${index})">${option}</div>
                 `).join('')}
             </div>
@@ -217,7 +294,7 @@ const highlightSelectedAnswer = (answer) => {
  */
 const calculateScore = (quiz) => {
     return state.userAnswers.reduce((score, answer, index) => {
-        const question = quiz.questions[index];
+        const question = state.shuffledQuestions[index];
         return answer === question.correct ? score + 1 : score;
     }, 0);
 };
@@ -270,7 +347,7 @@ const generateResultsTable = (quiz) => {
             <tbody>
     `;
 
-    quiz.questions.forEach((question, index) => {
+    state.shuffledQuestions.forEach((question, index) => {
         const userAnswer = state.userAnswers[index];
         const isCorrect = userAnswer === question.correct;
 
@@ -281,6 +358,7 @@ const generateResultsTable = (quiz) => {
             userAnswerText = userAnswer === true ? 'True' : 'False';
             correctAnswerText = question.correct === true ? 'True' : 'False';
         } else {
+            // For multiple-choice, use the original options
             userAnswerText = question.options[userAnswer];
             correctAnswerText = question.options[question.correct];
         }
