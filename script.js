@@ -983,8 +983,21 @@ function showQuestion() {
         `;
     }
 
-    questionHTML += '</div>';
+    questionHTML += `
+        </div>
+        <div class="navigation-buttons">
+            ${currentQuestionIndex > 0 ? `<button class="nav-btn" onclick="previousQuestion()">Previous</button>` : ''}
+            <button class="nav-btn" onclick="nextQuestion()">${currentQuestionIndex === quiz.questions.length - 1 ? 'Finish' : 'Next'}</button>
+        </div>
+    `;
     container.innerHTML = questionHTML;
+}
+
+function previousQuestion() {
+    if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        showQuestion();
+    }
 }
 
 function selectAnswer(answer) {
@@ -995,14 +1008,6 @@ function selectAnswer(answer) {
     selectedOption.classList.add('selected');
     
     userAnswers[currentQuestionIndex] = answer;
-    
-    // Auto-advance to next question after a short delay
-    setTimeout(() => {
-        if (currentQuestionIndex < quizzes[currentQuiz].questions.length - 1) {
-            currentQuestionIndex++;
-            showQuestion();
-        }
-    }, 500);
 }
 
 function submitQuiz() {

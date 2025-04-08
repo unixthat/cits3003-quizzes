@@ -1,0 +1,46 @@
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows system files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux system files
+*~
+.directory
+.Trash-*
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Project specific
+extracted_slides/
+pdfs/
+*.pdf
+
+# Logs and databases
+*.log
+*.sqlite
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Build and dependency directories
+node_modules/
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak 
