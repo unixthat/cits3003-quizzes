@@ -927,22 +927,73 @@ const quizzes = {
     }
 };
 
-let currentQuiz = null;
-let currentQuestionIndex = 0;
-let userAnswers = [];
+/**
+ * @typedef {Object} State
+ * @property {number|null} currentQuiz - Current quiz number
+ * @property {number} currentQuestionIndex - Current question index
+ * @property {Array} userAnswers - User's answers for the current quiz
+ */
 
-function loadQuiz(quizNumber) {
-    currentQuiz = quizNumber;
-    currentQuestionIndex = 0;
-    userAnswers = [];
+/** @type {State} */
+const state = {
+    currentQuiz: null,
+    currentQuestionIndex: 0,
+    userAnswers: []
+};
 
+/**
+ * Saves the current quiz progress to localStorage
+ */
+const saveProgress = () => {
+    if (state.currentQuiz !== null && state.userAnswers.length > 0) {
+        try {
+            localStorage.setItem(
+                `quiz${state.currentQuiz}_answers`,
+                JSON.stringify(state.userAnswers)
+            );
+        } catch (error) {
+            console.error('Failed to save progress:', error);
+        }
+    }
+};
+
+/**
+ * Loads a quiz by number
+ * @param {number} quizNumber - The quiz number to load
+ * @throws {Error} If quiz number is invalid
+ */
+const loadQuiz = (quizNumber) => {
     const quiz = quizzes[quizNumber];
     if (!quiz) {
-        alert('Quiz not found!');
-        return;
+        throw new Error('Quiz not found!');
     }
 
+    // Reset state
+    state.currentQuiz = quizNumber;
+    state.currentQuestionIndex = 0;
+    state.userAnswers = [];
+
+    // Try to load saved progress
+    try {
+        const savedAnswers = localStorage.getItem(`quiz${quizNumber}_answers`);
+        if (savedAnswers) {
+            state.userAnswers = JSON.parse(savedAnswers);
+        }
+    } catch (error) {
+        console.error('Failed to load saved progress:', error);
+    }
+
+    renderQuiz(quiz);
+};
+
+/**
+ * Renders the quiz UI
+ * @param {Object} quiz - The quiz object to render
+ */
+const renderQuiz = (quiz) => {
     const container = document.querySelector('.container');
+    if (!container) return;
+
     container.innerHTML = `
         <button class="back-btn" onclick="showQuizList()">Back to Quiz List</button>
         <div class="quiz-container">
@@ -953,16 +1004,19 @@ function loadQuiz(quizNumber) {
     `;
 
     showQuestion();
-}
+};
 
-function showQuestion() {
-    const quiz = quizzes[currentQuiz];
-    const question = quiz.questions[currentQuestionIndex];
+/**
+ * Shows the current question
+ */
+const showQuestion = () => {
+    const quiz = quizzes[state.currentQuiz];
+    const question = quiz.questions[state.currentQuestionIndex];
     const container = document.getElementById('question-container');
 
     let questionHTML = `
         <div class="question">
-            <h3>Question ${currentQuestionIndex + 1} of ${quiz.questions.length}</h3>
+            <h3>Question ${state.currentQuestionIndex + 1} of ${quiz.questions.length}</h3>
             <p>${question.text}</p>
     `;
 
@@ -986,67 +1040,130 @@ function showQuestion() {
     questionHTML += `
         </div>
         <div class="navigation-buttons">
-            ${currentQuestionIndex > 0 ? `<button class="nav-btn" onclick="previousQuestion()">Previous</button>` : ''}
-            <button class="nav-btn" onclick="nextQuestion()">${currentQuestionIndex === quiz.questions.length - 1 ? 'Finish' : 'Next'}</button>
+            ${state.currentQuestionIndex > 0 ? `<button class="nav-btn" onclick="previousQuestion()">Previous</button>` : ''}
+            <button class="nav-btn" onclick="nextQuestion()">${state.currentQuestionIndex === quiz.questions.length - 1 ? 'Finish' : 'Next'}</button>
         </div>
     `;
     container.innerHTML = questionHTML;
-}
+};
 
-function previousQuestion() {
-    if (currentQuestionIndex > 0) {
-        currentQuestionIndex--;
-        showQuestion();
-    }
-}
+/**
+ * Handles selecting an answer
+ * @param {boolean|number} answer - The selected answer
+ */
+const selectAnswer = (answer) => {
+    state.userAnswers[state.currentQuestionIndex] = answer;
+    highlightSelectedAnswer(answer);
+    saveProgress();
+};
 
-function selectAnswer(answer) {
+/**
+ * Highlights the selected answer in the UI
+ * @param {boolean|number} answer - The answer to highlight
+ */
+const highlightSelectedAnswer = (answer) => {
     const options = document.querySelectorAll('.option');
     options.forEach(option => option.classList.remove('selected'));
 
-    const selectedOption = event.target;
-    selectedOption.classList.add('selected');
+    if (typeof answer === 'boolean') {
+        options[answer ? 0 : 1].classList.add('selected');
+    } else {
+        options[answer].classList.add('selected');
+    }
+};
 
-    userAnswers[currentQuestionIndex] = answer;
-}
+/**
+ * Navigates to the previous question
+ */
+const previousQuestion = () => {
+    if (state.currentQuestionIndex > 0) {
+        state.currentQuestionIndex--;
+        showQuestion();
+    }
+};
 
-function submitQuiz() {
-    const quiz = quizzes[currentQuiz];
-    let score = 0;
+/**
+ * Navigates to the next question
+ */
+const nextQuestion = () => {
+    const quiz = quizzes[state.currentQuiz];
+    if (state.currentQuestionIndex < quiz.questions.length - 1) {
+        state.currentQuestionIndex++;
+        showQuestion();
+    }
+};
 
-    userAnswers.forEach((answer, index) => {
-        const question = quiz.questions[index];
-        if (question.type === 'true-false') {
-            if (answer === question.correct) score++;
-        } else if (question.type === 'multiple-choice') {
-            if (answer === question.correct) score++;
-        }
-    });
-
+/**
+ * Calculates the quiz score and displays results
+ */
+const submitQuiz = () => {
+    const quiz = quizzes[state.currentQuiz];
+    const score = calculateScore(quiz);
     const percentage = (score / quiz.questions.length) * 100;
 
+    renderResults(score, quiz.questions.length, percentage);
+
+    // Clear saved progress after submission
+    try {
+        localStorage.removeItem(`quiz${state.currentQuiz}_answers`);
+    } catch (error) {
+        console.error('Failed to clear saved progress:', error);
+    }
+};
+
+/**
+ * Calculates the quiz score
+ * @param {Object} quiz - The quiz object
+ * @returns {number} The calculated score
+ */
+const calculateScore = (quiz) => {
+    return state.userAnswers.reduce((score, answer, index) => {
+        const question = quiz.questions[index];
+        return answer === question.correct ? score + 1 : score;
+    }, 0);
+};
+
+/**
+ * Renders the quiz results
+ * @param {number} score - The quiz score
+ * @param {number} total - Total number of questions
+ * @param {number} percentage - Score percentage
+ */
+const renderResults = (score, total, percentage) => {
     const container = document.querySelector('.container');
+    if (!container) return;
+
     container.innerHTML = `
         <button class="back-btn" onclick="showQuizList()">Back to Quiz List</button>
         <div class="results">
             <h2>Quiz Results</h2>
-            <div class="score">${score}/${quiz.questions.length} (${percentage.toFixed(1)}%)</div>
+            <div class="score">${score}/${total} (${percentage.toFixed(1)}%)</div>
             <div class="feedback">
                 ${getFeedback(percentage)}
             </div>
         </div>
     `;
-}
+};
 
-function getFeedback(percentage) {
+/**
+ * Gets feedback based on score percentage
+ * @param {number} percentage - Score percentage
+ * @returns {string} Feedback message
+ */
+const getFeedback = (percentage) => {
     if (percentage >= 90) return "Excellent! You've mastered this material!";
     if (percentage >= 70) return "Good job! You have a solid understanding.";
     if (percentage >= 50) return "You're getting there! Review the material and try again.";
     return "You might want to review the material and try again.";
-}
+};
 
-function showQuizList() {
+/**
+ * Shows the quiz list
+ */
+const showQuizList = () => {
     const container = document.querySelector('.container');
+    if (!container) return;
+
     container.innerHTML = `
         <header>
             <h1>CITS3003 Computer Graphics Practice Tests</h1>
@@ -1061,25 +1178,15 @@ function showQuizList() {
             `).join('')}
         </div>
     `;
-}
+};
 
-// Initialize the quiz list when the page loads
+// Event Listeners
 document.addEventListener('DOMContentLoaded', showQuizList);
 
-// Add event listener for page visibility changes
 document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'hidden') {
-        // Save any unsaved progress when the page is hidden
-        if (currentQuiz !== null && userAnswers.length > 0) {
-            localStorage.setItem(`quiz${currentQuiz}_answers`, JSON.stringify(userAnswers));
-        }
+        saveProgress();
     }
 });
 
-// Add event listener for beforeunload
-window.addEventListener('beforeunload', (event) => {
-    // Save any unsaved progress before the page is unloaded
-    if (currentQuiz !== null && userAnswers.length > 0) {
-        localStorage.setItem(`quiz${currentQuiz}_answers`, JSON.stringify(userAnswers));
-    }
-}); 
+window.addEventListener('beforeunload', saveProgress); 
