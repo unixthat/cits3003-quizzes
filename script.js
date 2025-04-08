@@ -31,12 +31,8 @@ const saveProgress = () => {
     }
 };
 
-/**
- * Loads a quiz by number
- * @param {number} quizNumber - The quiz number to load
- * @throws {Error} If quiz number is invalid
- */
-const loadQuiz = (quizNumber) => {
+// Expose functions to window object immediately
+window.loadQuiz = (quizNumber) => {
     const quiz = quizData[quizNumber];
     if (!quiz) {
         throw new Error('Quiz not found!');
@@ -60,8 +56,63 @@ const loadQuiz = (quizNumber) => {
     renderQuiz(quiz);
 };
 
-// Make loadQuiz available globally for onclick handlers
-window.loadQuiz = loadQuiz;
+window.showQuizList = () => {
+    const container = document.querySelector('.container');
+    if (!container) return;
+
+    container.innerHTML = `
+        <header>
+            <h1>CITS3003 Computer Graphics Practice Tests</h1>
+            <p>Select a practice test to begin</p>
+        </header>
+        
+        <div class="quiz-list">
+            ${Object.entries(quizData).map(([id, quiz]) => `
+                <div class="quiz-card" onclick="loadQuiz(${id})">
+                    <h2>${quiz.title}</h2>
+                </div>
+            `).join('')}
+        </div>
+    `;
+};
+
+window.selectAnswer = (answer) => {
+    state.userAnswers[state.currentQuestionIndex] = answer;
+    highlightSelectedAnswer(answer);
+    saveProgress();
+};
+
+window.previousQuestion = () => {
+    if (state.currentQuestionIndex > 0) {
+        state.currentQuestionIndex--;
+        showQuestion();
+    }
+};
+
+window.nextQuestion = () => {
+    const quiz = quizData[state.currentQuiz];
+    if (!quiz) return;
+
+    if (state.currentQuestionIndex < quiz.questions.length - 1) {
+        state.currentQuestionIndex++;
+        showQuestion();
+    }
+};
+
+window.submitQuiz = () => {
+    const quiz = quizData[state.currentQuiz];
+    const score = calculateScore(quiz);
+    const percentage = (score / quiz.questions.length) * 100;
+
+    renderResults(score, quiz.questions.length, percentage);
+
+    // Clear saved progress after submission
+    try {
+        localStorage.removeItem(`quiz${state.currentQuiz}_answers`);
+    } catch (error) {
+        console.error('Failed to clear saved progress:', error);
+    }
+};
 
 /**
  * Renders the quiz UI
@@ -145,19 +196,6 @@ const generateOptionsHTML = (question) => {
 };
 
 /**
- * Handles selecting an answer
- * @param {boolean|number} answer - The selected answer
- */
-const selectAnswer = (answer) => {
-    state.userAnswers[state.currentQuestionIndex] = answer;
-    highlightSelectedAnswer(answer);
-    saveProgress();
-};
-
-// Make selectAnswer available globally for onclick handlers
-window.selectAnswer = selectAnswer;
-
-/**
  * Highlights the selected answer in the UI
  * @param {boolean|number} answer - The answer to highlight
  */
@@ -171,56 +209,6 @@ const highlightSelectedAnswer = (answer) => {
         options[answer].classList.add('selected');
     }
 };
-
-/**
- * Navigates to the previous question
- */
-const previousQuestion = () => {
-    if (state.currentQuestionIndex > 0) {
-        state.currentQuestionIndex--;
-        showQuestion();
-    }
-};
-
-// Make previousQuestion available globally for onclick handlers
-window.previousQuestion = previousQuestion;
-
-/**
- * Navigates to the next question
- */
-const nextQuestion = () => {
-    const quiz = quizData[state.currentQuiz];
-    if (!quiz) return;
-
-    if (state.currentQuestionIndex < quiz.questions.length - 1) {
-        state.currentQuestionIndex++;
-        showQuestion();
-    }
-};
-
-// Make nextQuestion available globally for onclick handlers
-window.nextQuestion = nextQuestion;
-
-/**
- * Calculates the quiz score and displays results
- */
-const submitQuiz = () => {
-    const quiz = quizData[state.currentQuiz];
-    const score = calculateScore(quiz);
-    const percentage = (score / quiz.questions.length) * 100;
-
-    renderResults(score, quiz.questions.length, percentage);
-
-    // Clear saved progress after submission
-    try {
-        localStorage.removeItem(`quiz${state.currentQuiz}_answers`);
-    } catch (error) {
-        console.error('Failed to clear saved progress:', error);
-    }
-};
-
-// Make submitQuiz available globally for onclick handlers
-window.submitQuiz = submitQuiz;
 
 /**
  * Calculates the quiz score
@@ -327,34 +315,10 @@ const getFeedback = (percentage) => {
     return "You might want to review the material and try again.";
 };
 
-/**
- * Shows the quiz list
- */
-const showQuizList = () => {
-    const container = document.querySelector('.container');
-    if (!container) return;
-
-    container.innerHTML = `
-        <header>
-            <h1>CITS3003 Computer Graphics Practice Tests</h1>
-            <p>Select a practice test to begin</p>
-        </header>
-        
-        <div class="quiz-list">
-            ${Object.entries(quizData).map(([id, quiz]) => `
-                <div class="quiz-card" onclick="loadQuiz(${id})">
-                    <h2>${quiz.title}</h2>
-                </div>
-            `).join('')}
-        </div>
-    `;
-};
-
-// Make showQuizList available globally for onclick handlers
-window.showQuizList = showQuizList;
-
-// Event Listeners
-document.addEventListener('DOMContentLoaded', showQuizList);
+// Initialize the quiz list when the DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    showQuizList();
+});
 
 document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'hidden') {
